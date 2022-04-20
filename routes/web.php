@@ -17,6 +17,6 @@ Route::get('/', function () {
     //return ['foo' => 'bar'];
     // return 1;
     // return true;
-    // return 'one day service app';
-     return view('welcome');
+     return 'one day service app';
+    // return view('welcome');
 });
