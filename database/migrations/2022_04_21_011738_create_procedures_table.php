@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
+        //ตารางหัตถการ
         Schema::create('procedures', function (Blueprint $table) {
             $table->id();
-            $table->string('idclinic',4); //รหัสคลินิก
-            $table->string('idproced',4); //รหัสหัตถการ
-            $table->string('procedname'); //ชื่อหัตถการ
+            // $table->string('clinic_code', 6); //รหัสคลินิก
+            // $table->string('clinic_code', 6); //รหัสคลินิก
+            // $table->string('idproced',4); //รหัสหัตถการ
+            $table->string('name'); //ชื่อหัตถการ
+            $table->foreignId('clinic_id')->constrained();
             $table->timestamps();
         });
     }

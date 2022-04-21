@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clinics', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            //รหัสคลินิก
-            $table->string('code', 6)->unique();
-            //ชื่อคลินิก
-            $table->string('name');
+            $table->string('name_short', 125);   //ชื่อย่อ
+            $table->string('name'); //ชื่อห้อง
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clinics');
+        Schema::dropIfExists('rooms');
     }
 };
