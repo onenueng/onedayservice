@@ -39,38 +39,38 @@ return new class extends Migration
         Procedure::create(['name' => 'Biopsy', 'clinic_id' => $skin->id]);
         Procedure::create(['name' => 'Follow up', 'clinic_id' => $skin->id]);
         
-        // $nutrition = Clinic::where('name', 'โรคโภชนาการ')->first();
-        // Procedure::create(['name' => 'OGTT', 'clinic_id' => $nutrition->id]);
-        // Procedure::create(['name' => 'การตรวจเมตาบอลิสมของร่างกาย โดยการวัดจากค่าคาร์บอร์ไดออกไซด์', 'clinic_id' => $nutrition->id]);
-        // Procedure::create(['name' => 'Follow up', 'clinic_id' => $nutrition->id]);
+        $nutrition = Clinic::where('name', 'โรคโภชนาการ')->first();
+        Procedure::create(['name' => 'OGTT', 'clinic_id' => $nutrition->id]);
+        Procedure::create(['name' => 'การตรวจเมตาบอลิสมของร่างกาย โดยการวัดจากค่าคาร์บอร์ไดออกไซด์', 'clinic_id' => $nutrition->id]);
+        Procedure::create(['name' => 'Follow up', 'clinic_id' => $nutrition->id]);
 
-        // $endrocrin = Clinic::where('name', 'โรคต่อมไร้ท่อ')->first();
-        // Procedure::create(['name' => '1 mcg ACTH', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => '250 mcg ACTH', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'ITT', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'Clonidine', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'Glucagon', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'L-Dopa', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'OGTT test', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'OGTT for GH', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'GnRH', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'ให้ยา Zoledronic', 'clinic_id' => $endrocrin->id]);
-        // Procedure::create(['name' => 'Follow up', 'clinic_id' => $endrocrin->id]);
+        $endrocrin = Clinic::where('name', 'โรคต่อมไร้ท่อ')->first();
+        Procedure::create(['name' => '1 mcg ACTH', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => '250 mcg ACTH', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'ITT', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'Clonidine', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'Glucagon', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'L-Dopa', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'OGTT test', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'OGTT for GH', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'GnRH', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'ให้ยา Zoledronic', 'clinic_id' => $endrocrin->id]);
+        Procedure::create(['name' => 'Follow up', 'clinic_id' => $endrocrin->id]);
 
-        // $genetic = Clinic::where('name', 'โรคพันธุศาสตร์')->first();
-        // Procedure::create(['name' => 'ให้ enzyme', 'clinic_id' => $genetic->id]);
-        // Procedure::create(['name' => 'Biopsy', 'clinic_id' => $genetic->id]);
-        // Procedure::create(['name' => 'Follow up', 'clinic_id' => $genetic->id]);
+        $genetic = Clinic::where('name', 'โรคพันธุศาสตร์')->first();
+        Procedure::create(['name' => 'ให้ enzyme', 'clinic_id' => $genetic->id]);
+        Procedure::create(['name' => 'Biopsy', 'clinic_id' => $genetic->id]);
+        Procedure::create(['name' => 'Follow up', 'clinic_id' => $genetic->id]);
 
-        // $rheumato = Clinic::where('name', 'โรคข้อ')->first();
-        // Procedure::create(['name' => 'ให้ยา Tocilizumab Infliximab Rituximab', 'clinic_id' => $rheumato->id]);
-        // Procedure::create(['name' => 'เจาะข้อ/ฉีดข้อ', 'clinic_id' => $rheumato->id]);
-        // Procedure::create(['name' => 'Follow up', 'clinic_id' => $rheumato->id]);
+        $rheumato = Clinic::where('name', 'โรคข้อ')->first();
+        Procedure::create(['name' => 'ให้ยา Tocilizumab Infliximab Rituximab', 'clinic_id' => $rheumato->id]);
+        Procedure::create(['name' => 'เจาะข้อ/ฉีดข้อ', 'clinic_id' => $rheumato->id]);
+        Procedure::create(['name' => 'Follow up', 'clinic_id' => $rheumato->id]);
 
-        // $nephrology = Clinic::where('name', 'โรคไต')->first();
-        // Procedure::create(['name' => 'Biopsy', 'clinic_id' => $nephrology->id]);
-        // Procedure::create(['name' => 'ให้ยา IVCY', 'clinic_id' => $nephrology->id]);
-        // Procedure::create(['name' => 'Follow up', 'clinic_id' => $nephrology->id]);
+        $nephrology = Clinic::where('name', 'โรคไต')->first();
+        Procedure::create(['name' => 'Biopsy', 'clinic_id' => $nephrology->id]);
+        Procedure::create(['name' => 'ให้ยา IVCY', 'clinic_id' => $nephrology->id]);
+        Procedure::create(['name' => 'Follow up', 'clinic_id' => $nephrology->id]);
 
     }
 
