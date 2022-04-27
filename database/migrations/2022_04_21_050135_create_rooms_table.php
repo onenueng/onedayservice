@@ -23,7 +23,7 @@ return new class extends Migration
     }
 
         Room::create(['name_short' => 'ห้อง treatment จฟ.1','name' => 'ห้อง treatment  ตึกเจ้าฟ้ามหาจักรี ชั้น 1']);
-        Room::create(['name_short' => 'ห้องทำทดสอบ จฟ.7', 'code' => '0574', 'name' => 'ห้องทำทดสอบ  ตึกเจ้าฟ้ามหาจักรี ชั้น 7']);
+        Room::create(['name_short' => 'ห้องทำทดสอบ จฟ.7', 'name' => 'ห้องทำทดสอบ  ตึกเจ้าฟ้ามหาจักรี ชั้น 7']);
 
        
     /**
