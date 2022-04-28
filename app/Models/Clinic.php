@@ -10,4 +10,9 @@ class Clinic extends Model
     use HasFactory;
 
     protected $fillable = ['code', 'name'];
+
+    public function procedures()
+    {
+        return $this->hasMany(Procedure::class); // 'App\Models\Procedure'
+    }
 }

@@ -9,4 +9,9 @@ class Room extends Model
 {
     use HasFactory;
     protected $fillable = ['name_short','name'];
+
+    public function beds()
+    {
+        return $this->hasMany(Bed::class);
+    }
 }

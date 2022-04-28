@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Model\Room;
+use App\Models\Room;
 
 return new class extends Migration
 {
@@ -20,10 +20,12 @@ return new class extends Migration
             $table->string('name'); //ชื่อห้อง
             $table->timestamps();
         });
+
+        Room::create(['name_short' => 'ห้อง treatment จฟ.1','name' => 'ห้อง treatment ตึกเจ้าฟ้ามหาจักรี ชั้น 1']);
+        Room::create(['name_short' => 'ห้องทำทดสอบ จฟ.7', 'name' => 'ห้องทำทดสอบ ตึกเจ้าฟ้ามหาจักรี ชั้น 7']);
     }
 
-        Room::create(['name_short' => 'ห้อง treatment จฟ.1','name' => 'ห้อง treatment  ตึกเจ้าฟ้ามหาจักรี ชั้น 1']);
-        Room::create(['name_short' => 'ห้องทำทดสอบ จฟ.7', 'name' => 'ห้องทำทดสอบ  ตึกเจ้าฟ้ามหาจักรี ชั้น 7']);
+        
 
        
     /**

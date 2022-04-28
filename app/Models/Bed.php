@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Procedure extends Model
+class Bed extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','clinic_id'];
+    protected $fillable = ['no', 'type', 'room_id'];
 
-    public function clinic()
+    public function room()
     {
-        return $this->belongsTo(Clinic::class);
+        return $this->belongsTo(Room::class);
+        
     }
 }
