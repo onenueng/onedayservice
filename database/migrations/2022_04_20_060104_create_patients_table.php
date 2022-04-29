@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Patient;
 
 return new class extends Migration
 {
@@ -25,6 +26,13 @@ return new class extends Migration
             $table->date('dob');
             $table->timestamps();
         });
+
+        Patient::create([
+            'hn' => '65123456',
+            'full_name' => 'P Test',
+            'gender' => '1', 
+            'dob'=>'2021-01-01'
+        ]);
     }
 
     /**
