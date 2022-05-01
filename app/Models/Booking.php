@@ -34,6 +34,11 @@ class Booking extends Model
         return $this->hasMany(Procedure::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
 
 
