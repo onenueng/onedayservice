@@ -15,4 +15,10 @@ class Clinic extends Model
     {
         return $this->hasMany(Procedure::class); // 'App\Models\Procedure'
     }
+
+    public function bookings()
+    {
+        return $this->belongsTo(Booking::class);
+    }
+
 }

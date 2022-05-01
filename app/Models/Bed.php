@@ -13,6 +13,11 @@ class Bed extends Model
     public function room()
     {
         return $this->belongsTo(Room::class);
-        
+
+    }
+
+    public function bookings()
+    {
+        return $this->belongsTo(Booking::class);
     }
 }

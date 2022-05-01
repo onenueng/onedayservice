@@ -24,14 +24,16 @@ return new class extends Migration
             $table->unsignedTinyInteger('gender'); // f/m/u => 1/2/3
             // dob
             $table->date('dob');
+            $table->string('phone',10);
             $table->timestamps();
         });
 
         Patient::create([
-            'hn' => '65123456',
+            'hn' => 65123456,
             'full_name' => 'P Test',
-            'gender' => '1', 
-            'dob'=>'2021-01-01'
+            'gender' => 1,
+            'dob'=>'2021-01-01',
+            'phone'=>'1234567890'
         ]);
     }
 

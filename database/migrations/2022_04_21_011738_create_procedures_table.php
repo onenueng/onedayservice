@@ -38,7 +38,7 @@ return new class extends Migration
         $skin = Clinic::where('name', 'โรคผิวหนัง')->first();
         Procedure::create(['name' => 'Biopsy', 'clinic_id' => $skin->id]);
         Procedure::create(['name' => 'Follow up', 'clinic_id' => $skin->id]);
-        
+
         $nutrition = Clinic::where('name', 'โรคโภชนาการ')->first();
         Procedure::create(['name' => 'OGTT', 'clinic_id' => $nutrition->id]);
         Procedure::create(['name' => 'การตรวจเมตาบอลิสมของร่างกาย โดยการวัดจากค่าคาร์บอร์ไดออกไซด์', 'clinic_id' => $nutrition->id]);

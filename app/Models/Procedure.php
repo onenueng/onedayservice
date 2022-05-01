@@ -14,4 +14,10 @@ class Procedure extends Model
     {
         return $this->belongsTo(Clinic::class);
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
 }
