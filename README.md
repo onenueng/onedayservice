@@ -27,3 +27,11 @@ bed_id
 clinic_id
 procedure_id
 user_id
+
+## MVC
+* Model - database mapper
+* View - UI => template(html+css) + data(Model)
+* Controller - flow 
+
+
+## CSRF token ใช้กับการ post request

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Bed;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,15 @@ Route::get('/', function () {
     // return true;
     // return 'one day service app';
     return view('welcome');
+});
+
+Route::get('/booking', function () {
+    return view('booking');
+});
+
+Route::post('/booking', function () {
+    // validate
+    // save to table
+    // redirect
+    return request()->all();
 });
