@@ -21,3 +21,5 @@ class Procedure extends Model
     }
 
 }
+
+//$pr->clinic->name. ''. $pr->name

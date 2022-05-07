@@ -20,4 +20,6 @@ class Bed extends Model
     {
         return $this->belongsTo(Booking::class);
     }
+
+    //bed->room->name_sort.'bed-no' : $bed->no ." ".$bed->type
 }
