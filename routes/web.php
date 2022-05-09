@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Bed;
+use App\Models\Booking;
 use App\Models\Procedure;
 
 /*
@@ -34,5 +35,30 @@ Route::post('/booking', function () {
     // validate
     // save to table
     // redirect
-    return request()->all();
+    $data = request()->all();
+
+    //return $data;
+    
+    $booking = new Booking();
+    $booking->patient_id = 1;
+    $booking->bed_id = $data['bed'];
+    $bed = Bed::find($data['bed']);
+    $booking->room_id = $bed->room->id;
+    $booking->procedure_id = $data['procedure'];
+    $procedure = Procedure::find($data['procedure']);
+    $booking->clinic_id = $procedure->clinic->id;
+    // datetime_start
+    if ($data['time'] == 'morning'){
+       $booking->datetime_start = $data['datetime_start'] . ' ' . '09:00:00';
+       $booking->datetime_stop  = $data['datetime_start'] . ' ' . '12:00:00';
+    } else {
+        $booking->datetime_start = $data['datetime_start'] . ' ' . '13:00:00';
+        $booking->datetime_stop  = $data['datetime_start'] . ' ' . '16:00:00';
+    }
+    //week_day
+    $booking->week_day = now()->parse($data['datetime_start'])->weekDay();
+    $booking->user_id = 1;
+    $booking->save();
+
+    return $booking;
 });

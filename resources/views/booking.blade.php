@@ -19,20 +19,19 @@
             <input type="date" class="form-control" name="datetime_start" id="datetime_start" placeholder="กรุณากรอกวันที่" required>
         </div>
         <div class="form-check">
-            <label for="times" class="form-label">เวลา</label>
+            <label for="time" class="form-label">เวลา</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="times" id="time1" value="morning">
+            <input class="form-check-input" type="radio" name="time" id="time1" value="morning">
             <label class="form-check-label" for="time1" >เช้า</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio"  name="times" id="time2" value="afternoon">
+            <input class="form-check-input" type="radio"  name="time" id="time2" value="afternoon">
             <label class="form-check-label" for="time2">บ่าย</label>
         </div>
         <div class="mb-3" >
-            <label for="beds" class="form-label">เตียง</label>
-
-            <select name="beds" id="bed" class="form-select">
+            <label for="bed" class="form-label">เตียง</label>
+            <select name="bed" id="bed" class="form-select">
                 <option selected>--กรุณาเลือกเตียง--</option>
                 @foreach ($beds as $bed)
                 <option value="{{  $bed->id  }}">{{ $bed->room->name_short.'bed no' . $bed->no .' เตียง '.$bed->type }}</option>
@@ -40,8 +39,8 @@
             </select>
         </div>
         <div class="mb-3" >
-            <label for="procedures" class="form-label">หัตถการ</label>
-            <select name="procedures" id="procedure" class="form-select">
+            <label for="procedure" class="form-label">หัตถการ</label>
+            <select name="procedure" id="procedure" class="form-select">
                 <option selected>--กรุณาเลือกหัตถการ--</option>
                 @foreach ($procedures as $procedure)
                 <option value="{{  $procedure->id  }}">{{ $procedure->clinic->name. ' '. $procedure->name }}</option>
