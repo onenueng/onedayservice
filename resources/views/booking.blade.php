@@ -30,8 +30,8 @@
             <label class="form-check-label" for="time2">บ่าย</label>
         </div>
         <div class="mb-3" >
-            <label for="bed" class="form-label">เตียง</label>
-            <select name="bed" id="bed" class="form-select">
+            <label for="bed_id" class="form-label">เตียง</label>
+            <select name="bed_id" id="bed_id" class="form-select">
                 <option selected>--กรุณาเลือกเตียง--</option>
                 @foreach ($beds as $bed)
                 <option value="{{  $bed->id  }}">{{ $bed->room->name_short.'bed no' . $bed->no .' เตียง '.$bed->type }}</option>
@@ -39,8 +39,8 @@
             </select>
         </div>
         <div class="mb-3" >
-            <label for="procedure" class="form-label">หัตถการ</label>
-            <select name="procedure" id="procedure" class="form-select">
+            <label for="procedure_id" class="form-label">หัตถการ</label>
+            <select name="procedure_id" id="procedure_id" class="form-select">
                 <option selected>--กรุณาเลือกหัตถการ--</option>
                 @foreach ($procedures as $procedure)
                 <option value="{{  $procedure->id  }}">{{ $procedure->clinic->name. ' '. $procedure->name }}</option>

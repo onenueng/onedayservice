@@ -36,29 +36,46 @@ Route::post('/booking', function () {
     // save to table
     // redirect
     $data = request()->all();
+    //check booking date back
+    // $dateback = Booking::where($data['datetime_start'],'<', now());
+    // return $dateback;
 
-    //return $data;
+    if ($data['datetime_start'] < now()){
+        return 'จองวันที่ย้อนหลังไม่ได้';
+    }
+
+    //insert time to date
+    if ($data['time'] == 'morning'){
+        $datetime_start = $data['datetime_start'] . ' ' . '09:00:00';
+        $datetime_stop  = $data['datetime_start'] . ' ' . '12:00:00';
+     } else {
+         $datetime_start = $data['datetime_start'] . ' ' . '13:00:00';
+         $datetime_stop  = $data['datetime_start'] . ' ' . '16:00:00';
+     }
+     //check bed & datetime
+    $bookAlready = Booking::where('bed_id',$data['bed_id'])->where('datetime_start', $datetime_start)->count();
+
+
+    if ($bookAlready > 0){
+        return 'เตียงนี้ถูกจองแล้ว';
+    }
     
     $booking = new Booking();
     $booking->patient_id = 1;
-    $booking->bed_id = $data['bed'];
-    $bed = Bed::find($data['bed']);
+    $booking->bed_id = $data['bed_id'];
+    $bed = Bed::find($data['bed_id']);
     $booking->room_id = $bed->room->id;
-    $booking->procedure_id = $data['procedure'];
-    $procedure = Procedure::find($data['procedure']);
+    $booking->procedure_id = $data['procedure_id'];
+    $procedure = Procedure::find($data['procedure_id']);
     $booking->clinic_id = $procedure->clinic->id;
     // datetime_start
-    if ($data['time'] == 'morning'){
-       $booking->datetime_start = $data['datetime_start'] . ' ' . '09:00:00';
-       $booking->datetime_stop  = $data['datetime_start'] . ' ' . '12:00:00';
-    } else {
-        $booking->datetime_start = $data['datetime_start'] . ' ' . '13:00:00';
-        $booking->datetime_stop  = $data['datetime_start'] . ' ' . '16:00:00';
-    }
-    //week_day
+    $booking->datetime_start = $datetime_start;
+    $booking->datetime_stop = $datetime_stop;
+    
+    // week_day
     $booking->week_day = now()->parse($data['datetime_start'])->weekDay();
     $booking->user_id = 1;
-    $booking->save();
+    $booking->save(); //insert data
 
     return $booking;
 });
