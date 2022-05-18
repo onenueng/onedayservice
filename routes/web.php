@@ -40,7 +40,10 @@ Route::post('/booking', function () {
     // $dateback = Booking::where($data['datetime_start'],'<', now());
     // return $dateback;
 
-    if ($data['datetime_start'] < now()){
+    $currentdate = date('Y-m-d');
+
+    if ($data['datetime_start'] < $currentdate){
+        return back()->with('feedback', 'จองวันที่ย้อนหลังไม่ได้');
         return 'จองวันที่ย้อนหลังไม่ได้';
     }
 
@@ -57,6 +60,7 @@ Route::post('/booking', function () {
 
 
     if ($bookAlready > 0){
+        return back()->with('feedback', 'เตียงนี้ถูกจองแล้ว');
         return 'เตียงนี้ถูกจองแล้ว';
     }
     
@@ -77,5 +81,10 @@ Route::post('/booking', function () {
     $booking->user_id = 1;
     $booking->save(); //insert data
 
-    return $booking;
+    //return $booking;
+    return redirect()->route('home')->with('feedback', 'จองเตียงสำเร็จแล้ว');
 });
+
+Route::get('/my-home', function () {
+    return view('index');
+})->name('home');

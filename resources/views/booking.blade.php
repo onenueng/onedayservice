@@ -11,6 +11,12 @@
 <body>
     <div class="container" style="margin-top: 20px;" >
         <h1>One Day Service</h1>
+
+        @if(session('feedback'))
+        <div>{{ session('feedback') }}</div>
+        @endif
+
+
         <form action="/booking" method = "post" class="row g-3">
         @csrf
 
