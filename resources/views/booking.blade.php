@@ -13,7 +13,7 @@
         <h1>One Day Service</h1>
 
         @if(session('feedback'))
-        <div>{{ session('feedback') }}</div>
+        <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
         @endif
 
 

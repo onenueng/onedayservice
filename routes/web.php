@@ -44,7 +44,7 @@ Route::post('/booking', function () {
 
     if ($data['datetime_start'] < $currentdate){
         return back()->with('feedback', 'จองวันที่ย้อนหลังไม่ได้');
-        return 'จองวันที่ย้อนหลังไม่ได้';
+
     }
 
     //insert time to date
@@ -61,9 +61,9 @@ Route::post('/booking', function () {
 
     if ($bookAlready > 0){
         return back()->with('feedback', 'เตียงนี้ถูกจองแล้ว');
-        return 'เตียงนี้ถูกจองแล้ว';
+
     }
-    
+
     $booking = new Booking();
     $booking->patient_id = 1;
     $booking->bed_id = $data['bed_id'];
@@ -75,7 +75,7 @@ Route::post('/booking', function () {
     // datetime_start
     $booking->datetime_start = $datetime_start;
     $booking->datetime_stop = $datetime_stop;
-    
+
     // week_day
     $booking->week_day = now()->parse($data['datetime_start'])->weekDay();
     $booking->user_id = 1;
