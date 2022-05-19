@@ -17,10 +17,6 @@ use App\Models\Procedure;
 */
 
 Route::get('/', function () {
-    //return ['foo' => 'bar'];
-    // return 1;
-    // return true;
-    // return 'one day service app';
     return view('welcome');
 });
 
@@ -37,13 +33,10 @@ Route::post('/booking', function () {
     // redirect
     $data = request()->all();
     //check booking date back
-    // $dateback = Booking::where($data['datetime_start'],'<', now());
-    // return $dateback;
-
     $currentdate = date('Y-m-d');
 
     if ($data['datetime_start'] < $currentdate){
-        return back()->with('feedback', 'จองวันที่ย้อนหลังไม่ได้');
+        return back()->with('feedback', 'จองวันที่ย้อนหลังไม่ได้')->withInput();
 
     }
 
@@ -60,7 +53,7 @@ Route::post('/booking', function () {
 
 
     if ($bookAlready > 0){
-        return back()->with('feedback', 'เตียงนี้ถูกจองแล้ว');
+        return back()->with('feedback', 'เตียงนี้ถูกจองแล้ว')->withInput();
 
     }
 
@@ -81,7 +74,6 @@ Route::post('/booking', function () {
     $booking->user_id = 1;
     $booking->save(); //insert data
 
-    //return $booking;
     return redirect()->route('home')->with('feedback', 'จองเตียงสำเร็จแล้ว');
 });
 
