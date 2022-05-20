@@ -89,13 +89,26 @@ Route::get('/clinic', function () {
 Route::post('/clinic', function () {
 
     $data = request()->all(); //รับมาจาก form
+   
+    $nameAlready = Clinic::where('name',$data['name'])->count();
 
-    $cl = Clinic::where('name',$data['name'])->first();
+    
+    if ($nameAlready > 0){
+        return back()->with('feedback', 'ชื่อคลินิกนี้มีซ้ำ');
 
-    if ($cl != null && $cl->name == $data['name']){
-        return 'already exist';//back();
     }
 
+     //เช็คว่าชื่อคลินิกซ้ำหรือไม่ V.1
+    // $cl = Clinic::where('name',$data['name'])->first();
+
+    // if ($cl != null && $cl->name == $data['name']){
+    //     return 'already exist';//back();
+    // }
+
+
+
+
+    //insert data
     // $data['user_id'] = ''; // get form session
     
     // $cl = Clinic::create($data);
