@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Bed;
 use App\Models\Booking;
 use App\Models\Procedure;
+use App\Models\Clinic;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +81,31 @@ Route::post('/booking', function () {
 Route::get('/my-home', function () {
     return view('index');
 })->name('home');
+
+Route::get('/clinic', function () {
+    return view('clinic');
+});
+
+Route::post('/clinic', function () {
+
+    $data = request()->all(); //รับมาจาก form
+
+    $cl = Clinic::where('name',$data['name'])->first();
+
+    if ($cl != null && $cl->name == $data['name']){
+        return 'already exist';//back();
+    }
+
+    // $data['user_id'] = ''; // get form session
+    
+    // $cl = Clinic::create($data);
+
+    $cl = new Clinic();
+    $cl->code = $data['code'];
+    $cl->name = $data['name'];
+    $cl->save();
+
+    return $cl;
+    
+
+});
