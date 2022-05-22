@@ -5,6 +5,7 @@ use App\Models\Bed;
 use App\Models\Booking;
 use App\Models\Procedure;
 use App\Models\Clinic;
+use App\Models\Room;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,12 +90,13 @@ Route::get('/clinic', function () {
 Route::post('/clinic', function () {
 
     $data = request()->all(); //รับมาจาก form
-   
-    $nameAlready = Clinic::where('name',$data['name'])->count();
 
-    
+    $nameAlready = Clinic::where('name',$data['name'])->count();
+    //$cl = Clinic::where('name','โรคไต')->count();
+    //return $nameAlready;
+
     if ($nameAlready > 0){
-        return back()->with('feedback', 'ชื่อคลินิกนี้มีซ้ำ');
+        return back()->with('feedback', 'ชื่อคลินิกนี้มีซ้ำ')->withInput();
 
     }
 
@@ -106,19 +108,64 @@ Route::post('/clinic', function () {
     // }
 
 
-
-
     //insert data
     // $data['user_id'] = ''; // get form session
-    
-    // $cl = Clinic::create($data);
 
-    $cl = new Clinic();
-    $cl->code = $data['code'];
-    $cl->name = $data['name'];
-    $cl->save();
+    // $clinic = Clinic::create($data);
 
-    return $cl;
-    
+    $clinic = new Clinic();
+    $clinic->code = $data['code'];
+    $clinic->name = $data['name'];
+    $clinic->save();
+
+    return $clinic;
+
+
+});
+
+Route::get('/procedure', function () {
+    return view('procedure');
+});
+
+Route::post('/procedure', function () {
+
+    $data = request()->all(); //รับมาจาก form
+
+    $procedure = Procedure::find($data['id']);
+    $procedure->clinic_id;
+    $clinic = Clinic::find($procedure);
+    $clinic->name;
+
+    $clinic = Clinic::where('name',$data['name'])->count();
+    return $clinic;
+
+
+
+
+
+});
+
+Route::get('/room', function () {
+    return view('room');
+});
+
+Route::post('/room', function () {
+
+    $data = request()->all(); //รับมาจาก form
+
+    $nameAlready = Room::where('name_short',$data['name_short'])->orwhere('name', $data['name'])->count();
+    //$cl = Clinic::where('name','โรคไต')->count();
+    //return $nameAlready;
+
+    if ($nameAlready > 0){
+        return back()->with('feedback', 'ชื่อห้องนี้มีซ้ำ')->withInput();
+
+    }
+
+    $room = Room::create($data);
+
+
+    return $room;
+
 
 });
