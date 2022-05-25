@@ -25,14 +25,17 @@
             <label for="name" class="form-label"> ชื่อ</label>
             <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="กรุณากรอกชื่อ" required>
         </div>
-        <div class="mb-3" >
+        <div class="mb-3 col-sm-4" >
             <label for="clinic_id" class="form-label">หัตถการ</label>
             <select name="clinic_id" id="clinic_id" class="form-select">
+                <option selected>--กรุณาเลือกคลินิก--</option>
+            </select>
+            {{-- <select name="clinic_id" id="clinic_id" class="form-select">
                 <option selected>--กรุณาเลือกคลินิก--</option>
                 @foreach ($clinics as $clinic)
                 <option value="{{  $clinic->name  }}" > </option>
                 @endforeach
-            </select>
+            </select> --}}
         </div>
         <div class="mb-3 col-sm-4">
             <input type="submit" value ="submit" class="btn btn-primary">

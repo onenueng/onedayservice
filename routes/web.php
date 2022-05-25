@@ -130,18 +130,14 @@ Route::get('/procedure', function () {
 Route::post('/procedure', function () {
 
     $data = request()->all(); //รับมาจาก form
+    $procedure = new Procedure();
+    $procedure->name = $data['name'];
+    $procedure->clinic_id = $data['clinic_id'];
+    $procedure->foreignId('clinic_id')->constrained();
 
-    $procedure = Procedure::find($data['id']);
-    $procedure->clinic_id;
-    $clinic = Clinic::find($procedure);
-    $clinic->name;
+    $procedure->save();
 
-    $clinic = Clinic::where('name',$data['name'])->count();
-    return $clinic;
-
-
-
-
+    return $this->belongsTo('App\Models\Clinic', 'foreign_key');
 
 });
 
