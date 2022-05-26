@@ -25,9 +25,9 @@ return new class extends Migration
         Room::create(['name_short' => 'ห้องทำทดสอบ จฟ.7', 'name' => 'ห้องทำทดสอบ ตึกเจ้าฟ้ามหาจักรี ชั้น 7']);
     }
 
-        
 
-       
+
+
     /**
      * Reverse the migrations.
      *

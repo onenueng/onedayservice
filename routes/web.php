@@ -5,6 +5,7 @@ use App\Models\Bed;
 use App\Models\Booking;
 use App\Models\Procedure;
 use App\Models\Clinic;
+use App\Models\Room;
 
 /*
 |--------------------------------------------------------------------------
