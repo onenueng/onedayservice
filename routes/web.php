@@ -88,37 +88,26 @@ Route::get('/clinic', function () {
 
 Route::post('/clinic', function () {
 
-    $data = request()->all(); //รับมาจาก form
+    $data = request()->all();
+    
+       
+    $booking = new Booking();
+    $booking->patient_id = 1;
+    $booking->bed_id = $data['bed_id'];
+    $bed = Bed::find($data['bed_id']);
+    $booking->room_id = $bed->room->id;
+    $booking->procedure_id = $data['procedure_id'];
+    $procedure = Procedure::find($data['procedure_id']);
+    $booking->clinic_id = $procedure->clinic->id;
+    // datetime_start
+    $booking->datetime_start = $datetime_start;
+    $booking->datetime_stop = $datetime_stop;
+
+    // week_day
+    $booking->week_day = now()->parse($data['datetime_start'])->weekDay();
+    $booking->user_id = 1;
+    $booking->save(); //insert data
    
-    $nameAlready = Clinic::where('name',$data['name'])->count();
-
-    
-    if ($nameAlready > 0){
-        return back()->with('feedback', 'ชื่อคลินิกนี้มีซ้ำ');
-
-    }
-
-     //เช็คว่าชื่อคลินิกซ้ำหรือไม่ V.1
-    // $cl = Clinic::where('name',$data['name'])->first();
-
-    // if ($cl != null && $cl->name == $data['name']){
-    //     return 'already exist';//back();
-    // }
-
-
-
-
-    //insert data
-    // $data['user_id'] = ''; // get form session
-    
-    // $cl = Clinic::create($data);
-
-    $cl = new Clinic();
-    $cl->code = $data['code'];
-    $cl->name = $data['name'];
-    $cl->save();
-
-    return $cl;
     
 
 });
