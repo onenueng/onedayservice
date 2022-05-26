@@ -100,25 +100,16 @@ Route::post('/clinic', function () {
 
     }
 
-     //เช็คว่าชื่อคลินิกซ้ำหรือไม่ V.1
-    // $cl = Clinic::where('name',$data['name'])->first();
-
-    // if ($cl != null && $cl->name == $data['name']){
-    //     return 'already exist';//back();
-    // }
-
-
-    //insert data
-    // $data['user_id'] = ''; // get form session
-
-    // $clinic = Clinic::create($data);
 
     $clinic = new Clinic();
     $clinic->code = $data['code'];
     $clinic->name = $data['name'];
     $clinic->save();
 
-    return $clinic;
+    //return $clinic;
+
+    return redirect()->route('home')->with('feedback', 'เพิ่มคลินิกสำเร็จแล้ว');
+
 
 
 });
@@ -130,14 +121,22 @@ Route::get('/procedure', function () {
 Route::post('/procedure', function () {
 
     $data = request()->all(); //รับมาจาก form
+
+    $nameAlready = Procedure::where('name',$data['name'])->count();
+
+    if ($nameAlready > 0){
+        return back()->with('feedback', 'ชื่อหัตถการนี้ซ้ำ')->withInput();
+    }
+
+
+    // Procedure::create($data);
     $procedure = new Procedure();
     $procedure->name = $data['name'];
     $procedure->clinic_id = $data['clinic_id'];
-    $procedure->foreignId('clinic_id')->constrained();
 
     $procedure->save();
+    return $procedure;
 
-    return $this->belongsTo('App\Models\Clinic', 'foreign_key');
 
 });
 
@@ -150,18 +149,19 @@ Route::post('/room', function () {
     $data = request()->all(); //รับมาจาก form
 
     $nameAlready = Room::where('name_short',$data['name_short'])->orwhere('name', $data['name'])->count();
-    //$cl = Clinic::where('name','โรคไต')->count();
-    //return $nameAlready;
 
     if ($nameAlready > 0){
         return back()->with('feedback', 'ชื่อห้องนี้มีซ้ำ')->withInput();
-
     }
 
-    $room = Room::create($data);
+    $room = new Room();
+    $room->name_short = $data['name_short'];
+    $room->name = $data['name'];
+    $room->save();
 
-
-    return $room;
-
-
+    //return $room;
+    return redirect()->route('home')->with('feedback', 'เพิ่มห้องสำเร็จแล้ว');
 });
+
+
+

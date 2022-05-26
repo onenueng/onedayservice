@@ -18,6 +18,8 @@
         @endif
 
         <a class="btn btn-primary" role="button" href="booking">จองเตียง</a>
+        <a class="btn btn-primary" role="button" href="room">เพิ่มห้อง</a>
+        <a class="btn btn-primary" role="button" href="clinic">เพิ่มคลินิก</a>
 
     </div>
 </body>

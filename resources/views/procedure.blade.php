@@ -18,23 +18,20 @@
         @endif
 
 
-        <form action="" method="post">
+        <form action="/procedure" method="post">
          @csrf
 
          <div class="mb-3 col-sm-4">
-            <label for="name" class="form-label"> ชื่อ</label>
+            <label for="name" class="form-label"> ชื่อหัตถการ</label>
             <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="กรุณากรอกชื่อ" required>
         </div>
         <div class="mb-3 col-sm-4" >
-            <label for="clinic_id" class="form-label">หัตถการ</label>
-            <select name="clinic_id" id="clinic_id" class="form-select">
-                <option selected>--กรุณาเลือกคลินิก--</option>
-            </select>
+            <label for="clinic_id" class="form-label">คลินิก</label>
+            <input type="text" class="form-control" name="clinic_id" id="clinic_id" value="{{ old('clinic_id') }}" placeholder="กรุณากรอกคลินิก" required>
+
             {{-- <select name="clinic_id" id="clinic_id" class="form-select">
                 <option selected>--กรุณาเลือกคลินิก--</option>
-                @foreach ($clinics as $clinic)
-                <option value="{{  $clinic->name  }}" > </option>
-                @endforeach
+
             </select> --}}
         </div>
         <div class="mb-3 col-sm-4">
