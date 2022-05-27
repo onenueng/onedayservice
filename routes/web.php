@@ -132,6 +132,9 @@ Route::post('/procedure', function () {
     // Procedure::create($data);
     $procedure = new Procedure();
     $procedure->name = $data['name'];
+    // $procedure = Clinic::find($data['clinic_id'])->procedure->id;
+    $procedure = Procedure::find(1);
+    $procedure->clinic_id = $procedure->clinic_id;
     $procedure->clinic_id = $data['clinic_id'];
 
     $procedure->save();
@@ -161,6 +164,36 @@ Route::post('/room', function () {
 
     //return $room;
     return redirect()->route('home')->with('feedback', 'เพิ่มห้องสำเร็จแล้ว');
+});
+
+Route::get('/bed', function () {
+    return view('bed');
+});
+
+Route::post('/bed', function () {
+
+    $data = request()->all(); //รับมาจาก form
+
+    $nameAlready = Bed::where('no',$data['no'])->count();
+
+    if ($nameAlready > 0){
+        return back()->with('feedback', 'หมายเลขเตียงนี้มีซ้ำ')->withInput();
+    }
+
+    $bed = new Bed();
+    $bed->no = $data['no'];
+    $bed->type = $data['type'];
+
+
+
+    $bed->save();
+
+    return $bed;
+
+    // return redirect()->route('home')->with('feedback', 'เพิ่มคลินิกสำเร็จแล้ว');
+
+
+
 });
 
 
