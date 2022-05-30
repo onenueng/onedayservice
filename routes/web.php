@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Procedure;
 use App\Models\Clinic;
 use App\Models\Room;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,7 +116,10 @@ Route::post('/clinic', function () {
 });
 
 Route::get('/procedure', function () {
-    return view('procedure');
+    return view('procedure')->with([
+        'procedures'=> Procedure::all(),
+        'clinics'=> Clinic::all()
+    ]);
 });
 
 Route::post('/procedure', function () {
@@ -128,20 +132,15 @@ Route::post('/procedure', function () {
         return back()->with('feedback', 'ชื่อหัตถการนี้ซ้ำ')->withInput();
     }
 
-
-    // Procedure::create($data);
     $procedure = new Procedure();
     $procedure->name = $data['name'];
-    // $procedure = Clinic::find($data['clinic_id'])->procedure->id;
-    $procedure = Procedure::find(1);
-    $procedure->clinic_id = $procedure->clinic_id;
+    $clinic = Clinic::find($data['clinic_id']);
     $procedure->clinic_id = $data['clinic_id'];
-
     $procedure->save();
-    return $procedure;
-
-
+    // return request()->all();
+    return redirect()->route('home')->with('feedback', 'เพิ่มหัตถการสำเร็จแล้ว');
 });
+
 
 Route::get('/room', function () {
     return view('room');
@@ -191,8 +190,6 @@ Route::post('/bed', function () {
     return $bed;
 
     // return redirect()->route('home')->with('feedback', 'เพิ่มคลินิกสำเร็จแล้ว');
-
-
 
 });
 

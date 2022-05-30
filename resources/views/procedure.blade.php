@@ -27,18 +27,20 @@
         </div>
         <div class="mb-3 col-sm-4" >
             <label for="clinic_id" class="form-label">คลินิก</label>
-            {{-- <input type="text" class="form-control" name="clinic_id" id="clinic_id" value="{{ old('clinic_id') }}" placeholder="กรุณากรอกคลินิก" required> --}}
-
             <select name="clinic_id" id="clinic_id" class="form-select">
                 <option selected>--กรุณาเลือกคลินิก--</option>
+                @foreach ($clinics as $clinic)
+                <option value="{{ $clinic->id  }}" {{ old('clinic_id') == $clinic->id  ? 'selected' : '' }}> {{ $clinic->name}}</option>
+                @endforeach
+
 
             </select>
         </div>
         <div class="mb-3 col-sm-4">
             <input type="submit" value ="submit" class="btn btn-primary">
         </div>
-
         </form>
     </div>
+    {{-- {{ $clinics}} --}}
 </body>
 </html>
