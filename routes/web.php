@@ -166,32 +166,39 @@ Route::post('/room', function () {
 });
 
 Route::get('/bed', function () {
-    return view('bed');
+    return view('bed')->with([
+        'beds'=> Bed::all(),
+        'rooms'=> Room::all()
+    ]);
+
 });
 
 Route::post('/bed', function () {
 
     $data = request()->all(); //รับมาจาก form
+    // return $data;
+    $nameAlready = Bed::where('no',$data['no'])->where('type', $data['type'])->count();
 
-    $nameAlready = Bed::where('no',$data['no'])->count();
 
     if ($nameAlready > 0){
-        return back()->with('feedback', 'หมายเลขเตียงนี้มีซ้ำ')->withInput();
+        return back()->with('feedback', 'หมายเลขเตียง/ชนิด/นี้มีแล้ว')->withInput();
     }
 
     $bed = new Bed();
     $bed->no = $data['no'];
     $bed->type = $data['type'];
-
-
-
+    $bed = Bed::find($data['no']);
+    $bed->room_id;
+    // $room = Room::find($data['room_id']);
+    // $bed->room_id = $data['room_id'];
     $bed->save();
-
-    return $bed;
-
-    // return redirect()->route('home')->with('feedback', 'เพิ่มคลินิกสำเร็จแล้ว');
+    // return $bed;
+    // return request()->all();
+    return redirect()->route('home')->with('feedback', 'เพิ่มเตียงสำเร็จแล้ว');
 
 });
+
+
 
 
 

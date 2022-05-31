@@ -33,7 +33,6 @@
                 <option value="{{ $clinic->id  }}" {{ old('clinic_id') == $clinic->id  ? 'selected' : '' }}> {{ $clinic->name}}</option>
                 @endforeach
 
-
             </select>
         </div>
         <div class="mb-3 col-sm-4">
