@@ -187,10 +187,13 @@ Route::post('/bed', function () {
     $bed = new Bed();
     $bed->no = $data['no'];
     $bed->type = $data['type'];
-    $bed = Bed::find($data['no']);
-    $bed->room_id;
+    $room = Room::find($data['room_id']);
+    // return $bed;
+    $bed->room;
+    // $bed = Bed::find($data['bed_id']);
+    // $booking->room_id = $bed->room->id;
     // $room = Room::find($data['room_id']);
-    // $bed->room_id = $data['room_id'];
+    $bed->room_id = $data['room_id'];
     $bed->save();
     // return $bed;
     // return request()->all();

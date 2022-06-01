@@ -21,7 +21,7 @@
         @csrf
 
         <div class="mb-3">
-            <label for="date" class="form-label"> วันที่</label>
+            <label for="datetime_start" class="form-label"> วันที่</label>
             <input type="date" class="form-control" name="datetime_start" id="datetime_start" value="{{ old('datetime_start') }}" placeholder="กรุณากรอกวันที่" required>
         </div>
         <div class="form-check">
