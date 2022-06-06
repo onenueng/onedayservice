@@ -90,88 +90,38 @@ Route::get('/clinic', function () {
 
 Route::post('/clinic', function () {
 
-    $data = request()->all(); //รับมาจาก form
+    $data = request()->all();
+    
+       
+    $booking = new Booking();
+    $booking->patient_id = 1;
+    $booking->bed_id = $data['bed_id'];
+    $bed = Bed::find($data['bed_id']);
+    $booking->room_id = $bed->room->id;
+    $booking->procedure_id = $data['procedure_id'];
+    $procedure = Procedure::find($data['procedure_id']);
+    $booking->clinic_id = $procedure->clinic->id;
+    // datetime_start
+    $booking->datetime_start = $datetime_start;
+    $booking->datetime_stop = $datetime_stop;
 
-    $nameAlready = Clinic::where('name',$data['name'])->count();
-    //$cl = Clinic::where('name','โรคไต')->count();
-    //return $nameAlready;
+    // week_day
+    $booking->week_day = now()->parse($data['datetime_start'])->weekDay();
+    $booking->user_id = 1;
+    $booking->save(); //insert data
+   
+    
 
-    if ($nameAlready > 0){
-        return back()->with('feedback', 'ชื่อคลินิกนี้มีซ้ำ')->withInput();
-
-    }
-
-
-    $clinic = new Clinic();
-    $clinic->code = $data['code'];
-    $clinic->name = $data['name'];
-    $clinic->save();
-
-    //return $clinic;
-
-    return redirect()->route('home')->with('feedback', 'เพิ่มคลินิกสำเร็จแล้ว');
-
-
-
-});
-
-Route::get('/procedure', function () {
-    return view('procedure')->with([
-        'procedures'=> Procedure::all(),
-        'clinics'=> Clinic::all()
-    ]);
-});
-
-Route::post('/procedure', function () {
-
-    $data = request()->all(); //รับมาจาก form
-
-    $nameAlready = Procedure::where('name',$data['name'])->count();
-
-    if ($nameAlready > 0){
-        return back()->with('feedback', 'ชื่อหัตถการนี้ซ้ำ')->withInput();
-    }
-
-    $procedure = new Procedure();
-    $procedure->name = $data['name'];
-    $clinic = Clinic::find($data['clinic_id']);
-    $procedure->clinic_id = $data['clinic_id'];
-    $procedure->save();
-    // return request()->all();
-    return redirect()->route('home')->with('feedback', 'เพิ่มหัตถการสำเร็จแล้ว');
-});
-
-
-Route::get('/room', function () {
-    return view('room');
-});
-
-Route::post('/room', function () {
-
-    $data = request()->all(); //รับมาจาก form
-
-    $nameAlready = Room::where('name_short',$data['name_short'])->orwhere('name', $data['name'])->count();
-
-    if ($nameAlready > 0){
-        return back()->with('feedback', 'ชื่อห้องนี้มีซ้ำ')->withInput();
-    }
-
-    $room = new Room();
-    $room->name_short = $data['name_short'];
-    $room->name = $data['name'];
-    $room->save();
-
-    //return $room;
-    return redirect()->route('home')->with('feedback', 'เพิ่มห้องสำเร็จแล้ว');
 });
 
 Route::get('/bed', function () {
     return view('bed')->with([
-        'beds'=> Bed::all(),
-        'rooms'=> Room::all()
-    ]);
+        'beds'=>Bed::all(),
+        'rooms' =>Room::all()
 
+    ]);
 });
+
 
 Route::post('/bed', function () {
 
