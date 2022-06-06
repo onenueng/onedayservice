@@ -187,7 +187,7 @@ Route::post('/bed', function () {
     $bed = new Bed();
     $bed->no = $data['no'];
     $bed->type = $data['type'];
-    $room = Room::find($data['room_id']);
+    //$room = Room::find($data['room_id']);
     // return $bed;
     $bed->room;
     // $bed = Bed::find($data['bed_id']);
