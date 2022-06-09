@@ -7,6 +7,7 @@ use App\Http\Controllers\BedController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,7 @@ Route::get('/booking', [BookingController::class, 'create']); // create-form
 Route::get('/booking/{id}', [BookingController::class, 'show']); // read
 Route::post('/booking', [BookingController::class, 'store']); // create-insert to table
 
-Route::get('/my-home', function () {
-    return view('index');
-})->name('home');
+Route::get('/home', HomeController::class)->name('home');
 
 Route::get('/clinic', [ClinicController::class,'create']);
 
@@ -38,7 +37,6 @@ Route::post('/clinic', [ClinicController::class,'store']);
 Route::get('/procedure',[ProcedureController::class,'create']);
 
 Route::post('/procedure',[ProcedureController::class,'store']);
-
 
 Route::get('/room',[RoomController::class,'create']);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Procedure;
 use App\Models\Clinic;
+use Illuminate\Validation\Rule;
 
 class ProcedureController extends Controller
 {
@@ -20,19 +21,28 @@ class ProcedureController extends Controller
     public function store()
     {
         $data = request()->all(); //รับมาจาก form
+        
+        $validated = request()->validate([
+            'name' => [
+                'required',
+                Rule::unique('procedures')->where(fn ($query) => $query->where('clinic_id', $data['clinic_id'])),
+                'max:255'
+            ],
+            'clinic_id' => 'required|exists:clinics,id',
+        ]);
 
-    $nameAlready = Procedure::where('name',$data['name'])->count();
 
-    if ($nameAlready > 0){
-        return back()->with('feedback', 'ชื่อหัตถการนี้ซ้ำ')->withInput();
-    }
+        // $nameAlready = Procedure::where('name', $data['name'])->where('clinic_id', $data['clinic_id'])->count();
 
-    $procedure = new Procedure();
-    $procedure->name = $data['name'];
-    $clinic = Clinic::find($data['clinic_id']);
-    $procedure->clinic_id = $data['clinic_id'];
-    $procedure->save();
-    // return request()->all();
-    return redirect()->route('home')->with('feedback', 'เพิ่มหัตถการสำเร็จแล้ว');
+        // if ($nameAlready > 0){
+        //     return back()->with('feedback', 'ชื่อหัตถการนี้ซ้ำ')->withInput();
+        // }
+
+        $procedure = new Procedure();
+        $procedure->name = $validated['name'];
+        $procedure->clinic_id = $validated['clinic_id'];
+        $procedure->save();
+
+        return redirect()->route('home')->with('feedback', 'เพิ่มหัตถการสำเร็จแล้ว');
     }
 }
