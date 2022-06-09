@@ -17,18 +17,29 @@
         <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
         @endif
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
 
         <form action="/bed" method="post">
          @csrf
 
          <div class="mb-3 col-sm-4">
             <label for="no" class="form-label"> หมายเลขเตียง</label>
-            <input type="text" class="form-control" name="no" id="no" value="{{ old('no') }}" placeholder="กรุณากรอกหมายเลขเตียง" required>
+            <input type="text" class="form-control" name="no" id="no" value="{{ old('no') }}" placeholder="กรุณากรอกหมายเลขเตียง">
         </div>
         <div class="mb-3 col-sm-4">
             <label for="type" class="form-label"> ชนิดของเตียง</label>
             <select name="type" id="type" class="form-select">
-                <option selected>--กรุณาเลือกชนิดของเตียง--</option>
+                <option selected value ="">--กรุณาเลือกชนิดของเตียง--</option>
                 <option value="large" {{ old('type') == 'large'? 'selected' : '' }}>Large</option>
                 <option value="small" {{ old('type') == 'small' ? 'selected' : '' }}>Small</option>
                 <option value="sofa" {{ old('type') == 'sofa' ? 'selected' : '' }}>Sofa</option>

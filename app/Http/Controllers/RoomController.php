@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
+use Illuminate\Validation\Rule;
 
 class RoomController extends Controller
 {
@@ -17,15 +18,25 @@ class RoomController extends Controller
     {
         $data = request()->all(); //รับมาจาก form
 
-        $nameAlready = Room::where('name_short',$data['name_short'])->orwhere('name', $data['name'])->count();
 
-        if ($nameAlready > 0){
-            return back()->with('feedback', 'ชื่อห้องนี้มีซ้ำ')->withInput();
-        }
+        $validated = request()->validate([
+            'name_short' => 'required|unique:rooms|max:255',
+            'name' => 'required|unique:rooms|max:255',
+        ]);
+
+        // $nameAlready = Room::where('name_short',$data['name_short'])->orwhere('name', $data['name'])->count();
+
+        // if ($nameAlready > 0){
+        //     return back()->with('feedback', 'ชื่อห้องนี้มีซ้ำ')->withInput();
+        // }
+
+        
+
+
 
     $room = new Room();
-    $room->name_short = $data['name_short'];
-    $room->name = $data['name'];
+    $room->name_short = $validated['name_short'];
+    $room->name = $validated['name'];
     $room->save();
 
     //return $room;
