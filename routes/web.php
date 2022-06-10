@@ -30,21 +30,19 @@ Route::post('/booking', [BookingController::class, 'store']); // create-insert t
 
 Route::get('/home', HomeController::class)->name('home');
 
-Route::get('/clinic', [ClinicController::class,'create']);
+Route::get('/clinic', [ClinicController::class,'index'])->name('clinic');
+Route::get('/clinic/create', [ClinicController::class,'create'])->name('clinic.create');
+Route::get('/clinic/{clinic}', [ClinicController::class,'show'])->name('clinic.show');
+Route::post('/clinic', [ClinicController::class,'store'])->name('clinic.store');
 
-Route::post('/clinic', [ClinicController::class,'store']);
+Route::get('/procedure',[ProcedureController::class,'create'])->name('procedure.create');
+Route::post('/procedure',[ProcedureController::class,'store'])->name('procedure.store');
 
-Route::get('/procedure',[ProcedureController::class,'create']);
+Route::get('/room',[RoomController::class,'create'])->name('room.create');
+Route::post('/room', [RoomController::class,'store'])->name('room.store');
 
-Route::post('/procedure',[ProcedureController::class,'store']);
-
-Route::get('/room',[RoomController::class,'create']);
-
-Route::post('/room', [RoomController::class,'store']);
-
-Route::get('/bed', [BedController::class,'create']);
-
-Route::post('/bed', [BedController::class,'store']);
+Route::get('/bed', [BedController::class,'create'])->name('bed.create');
+Route::post('/bed', [BedController::class,'store'])->name('bed.store');
 
 
 

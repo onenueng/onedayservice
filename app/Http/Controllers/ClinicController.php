@@ -46,4 +46,16 @@ class ClinicController extends Controller
 
 
     }
+
+    public function index() // []
+    {
+        $clinics = Clinic::all();
+
+        return view('clinic.index')->with(['clinics' => $clinics]);
+    }
+
+    public function show(Clinic $clinic)
+    {
+        return view('clinic.show')->with(['clinic' => $clinic]);
+    }
 }

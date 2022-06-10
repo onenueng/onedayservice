@@ -21,7 +21,7 @@ class RoomController extends Controller
 
         $validated = request()->validate([
             'name_short' => 'required|unique:rooms|max:255',
-            'name' => 'required|max:255',
+            'name' => 'required|unique:rooms|max:255',
         ]);
 
         // $nameAlready = Room::where('name_short',$data['name_short'])->orwhere('name', $data['name'])->count();
