@@ -30,9 +30,6 @@ class RoomController extends Controller
         //     return back()->with('feedback', 'ชื่อห้องนี้มีซ้ำ')->withInput();
         // }
 
-        
-
-
 
     $room = new Room();
     $room->name_short = $validated['name_short'];
