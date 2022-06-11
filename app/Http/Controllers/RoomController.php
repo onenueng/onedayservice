@@ -39,4 +39,19 @@ class RoomController extends Controller
     //return $room;
     return redirect()->route('home')->with('feedback', 'เพิ่มห้องสำเร็จแล้ว');
     }
+
+    public function index()
+    {
+        $rooms = Room::all();
+
+        return view('room.index')->with(['rooms'=> $rooms]);
+
+
+    }
+
+
+    public function show(Room $room)
+    {
+        return view('room.show')->with(['room' => $room]);
+    }
 }

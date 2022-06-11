@@ -30,7 +30,7 @@ Route::post('/booking', [BookingController::class, 'store']); // create-insert t
 
 Route::get('/home', HomeController::class)->name('home');
 
-Route::get('/clinic', [ClinicController::class,'index'])->name('clinic');
+Route::get('/clinic', [ClinicController::class,'index'])->name('clinic'); //เป็นหน้า index เพื่อแสดงข้อมูลทั้งหมด
 Route::get('/clinic/create', [ClinicController::class,'create'])->name('clinic.create');
 Route::get('/clinic/{clinic}', [ClinicController::class,'show'])->name('clinic.show');
 Route::post('/clinic', [ClinicController::class,'store'])->name('clinic.store');
@@ -38,7 +38,9 @@ Route::post('/clinic', [ClinicController::class,'store'])->name('clinic.store');
 Route::get('/procedure',[ProcedureController::class,'create'])->name('procedure.create');
 Route::post('/procedure',[ProcedureController::class,'store'])->name('procedure.store');
 
-Route::get('/room',[RoomController::class,'create'])->name('room.create');
+Route::get('/room',[RoomController::class,'index'])->name('room');
+Route::get('/room/create',[RoomController::class,'create'])->name('room.create');
+Route::get('/room/{room}',[RoomController::class,'show'])->name('room.show');
 Route::post('/room', [RoomController::class,'store'])->name('room.store');
 
 Route::get('/bed', [BedController::class,'create'])->name('bed.create');
