@@ -35,7 +35,8 @@ Route::get('/clinic/create', [ClinicController::class,'create'])->name('clinic.c
 Route::get('/clinic/{clinic}', [ClinicController::class,'show'])->name('clinic.show');
 Route::post('/clinic', [ClinicController::class,'store'])->name('clinic.store');
 
-Route::get('/procedure',[ProcedureController::class,'create'])->name('procedure.create');
+Route::get('/procedure',[ProcedureController::class,'index'])->name('procedure');
+Route::get('/procedure/create',[ProcedureController::class,'create'])->name('procedure.create');
 Route::post('/procedure',[ProcedureController::class,'store'])->name('procedure.store');
 
 Route::get('/room',[RoomController::class,'index'])->name('room');

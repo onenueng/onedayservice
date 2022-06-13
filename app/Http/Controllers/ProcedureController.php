@@ -45,4 +45,12 @@ class ProcedureController extends Controller
 
         return redirect()->route('home')->with('feedback', 'เพิ่มหัตถการสำเร็จแล้ว');
     }
+
+    public function index()
+    {
+        $procedures = Procedure::all();
+
+        return view('procedure.index')->with(['procedures'=> $procedures]);
+    }
+
 }

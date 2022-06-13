@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +12,41 @@
     </script>
     <title>Room</title>
 </head>
-<body>
-    @foreach ($rooms as $room )
-        <p>id: {{ $room->id }} </p>
-        <p>name short: {{ $room->name_short}} </p>
-        <p>name: {{ $room->name}} </p>
-        <a href=" {{ route('room.show', $room)}} ">Show</a>
-    @endforeach
 
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>รายละเอียด Room</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">name short</th>
+                            <th scope="col">name</th>
+                            <th scope="col">Show</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Del</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($rooms as $room )
+                        <tr>
+                            <td>{{ $room->id }}</td>
+                            <td>{{ $room->name_short}}</td>
+                            <td>{{ $room->name}}</td>
+                            <td><a href=" {{ route('room.show', $room)}} "> <button class="btn btn-primary"
+                                        type="button">Show</button> </a></td>
+                            <td><a href=" {{ route('room.show', $room)}} "> <button class="btn btn-primary"
+                                        type="button">Edit</button> </a></td>
+                            <td><a href=" {{ route('room.show', $room)}} "> <button class="btn btn-primary"
+                                        type="button">Del</button> </a></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
