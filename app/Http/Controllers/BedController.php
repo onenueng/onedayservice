@@ -47,4 +47,15 @@ class BedController extends Controller
         return redirect()->route('home')->with('feedback', 'เพิ่มเตียงสำเร็จแล้ว');
 
     }
+
+    public function index()
+    {
+        $beds = Bed::all();
+        return view('bed.index')->with(['beds' => $beds]);
+    }
+
+    public function show(Bed $bed)
+    {
+        return view('bed.show')->with(['bed' => $bed]);
+    }
 }

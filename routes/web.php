@@ -37,6 +37,7 @@ Route::post('/clinic', [ClinicController::class,'store'])->name('clinic.store');
 
 Route::get('/procedure',[ProcedureController::class,'index'])->name('procedure');
 Route::get('/procedure/create',[ProcedureController::class,'create'])->name('procedure.create');
+Route::get('/procedure/{procedure}', [ProcedureController::class,'show'])->name('procedure.show');
 Route::post('/procedure',[ProcedureController::class,'store'])->name('procedure.store');
 
 Route::get('/room',[RoomController::class,'index'])->name('room');
@@ -44,7 +45,9 @@ Route::get('/room/create',[RoomController::class,'create'])->name('room.create')
 Route::get('/room/{room}',[RoomController::class,'show'])->name('room.show');
 Route::post('/room', [RoomController::class,'store'])->name('room.store');
 
-Route::get('/bed', [BedController::class,'create'])->name('bed.create');
+Route::get('/bed', [BedController::class,'index'])->name('bed');
+Route::get('/bed/create', [BedController::class,'create'])->name('bed.create');
+Route::get('/bed/{bed}', [BedController::class,'show'])->name('bed.show');
 Route::post('/bed', [BedController::class,'store'])->name('bed.store');
 
 

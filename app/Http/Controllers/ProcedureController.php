@@ -21,7 +21,7 @@ class ProcedureController extends Controller
     public function store()
     {
         $data = request()->all(); //รับมาจาก form
-        
+
         $validated = request()->validate([
             'name' => [
                 'required',
@@ -53,4 +53,10 @@ class ProcedureController extends Controller
         return view('procedure.index')->with(['procedures'=> $procedures]);
     }
 
+    public function show(Procedure $procedure)
+    {
+        return view('procedure.show')->with(['procedure' => $procedure]);
+    }
 }
+
+

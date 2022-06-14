@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Procedure</title>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -28,12 +30,18 @@
                             <td>{{ $procedure->id }}</td>
                             <td>{{ $procedure->name}}</td>
                             <td>{{ $procedure->clinic_id}}</td>
-                            <td><a href=" {{ route('procedure.show', $procedure)}} "> <button class="btn btn-primary"
-                                        type="button">Show</button> </a></td>
-                            <td><a href=" {{ route('procedure.show', $procedure)}} "> <button class="btn btn-primary"
-                                        type="button">Edit</button> </a></td>
-                            <td><a href=" {{ route('procedure.show', $procedure)}} "> <button class="btn btn-primary"
-                                        type="button">Del</button> </a></td>
+                            <td><a href="{{ route('procedure.show', $procedure) }}">
+                                    <button type="button" class="btn btn-primary">Show</button>
+                                </a>
+                            </td>
+                            <td><a href="{{ route('procedure.show', $procedure) }}">
+                                    <button type="button" class="btn btn-primary">Edit</button>
+                                </a>
+                            </td>
+                            <td><a href="{{ route('procedure.show', $procedure) }}">
+                                    <button type="button" class="btn btn-primary">Del</button>
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -41,4 +49,5 @@
         </div>
     </div>
 </body>
+
 </html>
