@@ -51,11 +51,15 @@ class BedController extends Controller
     public function index()
     {
         $beds = Bed::all();
+
         return view('bed.index')->with(['beds' => $beds]);
     }
 
     public function show(Bed $bed)
     {
+
+        $bed = Bed::find($bed);
+
         return view('bed.show')->with(['bed' => $bed]);
     }
 }

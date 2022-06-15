@@ -25,7 +25,7 @@
                 <td>type: {{ $bed->type }}</td>
             </tr>
             <tr>
-                <td>room_id: {{ $bed->room_id}}</td>
+                <td>room: {{ $bed->room->name_short }}</td>
             </tr>
             <tr>
                 <td><a href="{{ route('bed') }}"><button type="button" class="btn btn-primary">back</button></a></td>

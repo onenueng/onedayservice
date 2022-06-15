@@ -23,7 +23,7 @@
                             <th scope="col">#</th>
                             <th scope="col">No</th>
                             <th scope="col">type</th>
-                            <th scope="col">room id</th>
+                            <th scope="col">room</th>
                             <th scope="col">Show</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Del</th>
@@ -33,9 +33,9 @@
                         @foreach($beds as $bed)
                         <tr>
                             <th scope="row"> {{ $bed->id }}</th>
-                            <th> {{ $bed->no }}</th>
+                            <th>{{ $bed->no }}</th>
                             <td>{{ $bed->type }}</td>
-                            <td>{{ $bed->room_id}}</td>
+                            <td>{{ $bed->room->name_short}}</td>
                             <td>
                                 <a href="{{ route('bed.show', $bed) }}"><button type="button" class="btn btn-primary">show</button>
                                 </a>
