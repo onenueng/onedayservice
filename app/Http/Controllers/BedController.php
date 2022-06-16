@@ -58,7 +58,8 @@ class BedController extends Controller
     public function show(Bed $bed)
     {
 
-        $bed = Bed::find($bed);
+        // $bed = Bed::find($bed);
+        // return $bed;
       
         return view('bed.show')->with(['bed' => $bed]);
     }
