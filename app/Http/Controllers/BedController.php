@@ -59,7 +59,7 @@ class BedController extends Controller
     {
 
         $bed = Bed::find($bed);
-
+      
         return view('bed.show')->with(['bed' => $bed]);
     }
 }
