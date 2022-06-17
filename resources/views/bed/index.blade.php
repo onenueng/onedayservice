@@ -17,7 +17,12 @@
         <div class="row">
             <div class="col-6">
                 <h1>รายละเอียด Bed</h1>
-                {{ session('feedback', null) }}
+                {{-- {{ session('feedback', null) }} --}}
+
+                @if(session('feedback'))
+                    <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
+                @endif
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -51,7 +56,7 @@
                                     @method('delete')
                                     <button type="submit" class="btn btn-primary">Del</button>
                                 </form>
-                                <!-- <a href="{{ route('bed.show', $bed) }}"><button type="button" class="btn btn-primary">Del</button> -->
+                                <!-- <a href=""><button type="button" class="btn btn-primary">Del</button> -->
                                 </a>
                             </td>
                         </tr>

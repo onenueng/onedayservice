@@ -34,6 +34,7 @@ Route::get('/clinic', [ClinicController::class,'index'])->name('clinic'); //เน€เ
 Route::get('/clinic/create', [ClinicController::class,'create'])->name('clinic.create');
 Route::get('/clinic/{clinic}', [ClinicController::class,'show'])->name('clinic.show');
 Route::post('/clinic', [ClinicController::class,'store'])->name('clinic.store');
+Route::delete('/clinic/{clinic}', [ClinicController::class,'destroy'])->name('clinic.destroy');
 
 Route::get('/procedure',[ProcedureController::class,'index'])->name('procedure');
 Route::get('/procedure/create',[ProcedureController::class,'create'])->name('procedure.create');

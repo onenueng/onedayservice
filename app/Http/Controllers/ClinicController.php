@@ -58,4 +58,11 @@ class ClinicController extends Controller
     {
         return view('clinic.show')->with(['clinic' => $clinic]);
     }
+
+    public function destroy(Clinic $clinic)
+    {
+        $clinic->delete();
+
+        return back()->with('feedback', ' ลบคลินิก '.$clinic->name. ' สำเร็จแล้ว');
+    }
 }

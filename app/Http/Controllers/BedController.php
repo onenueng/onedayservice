@@ -60,7 +60,7 @@ class BedController extends Controller
 
         // $bed = Bed::find($bed);
         // return $bed;
-      
+
         return view('bed.show')->with(['bed' => $bed]);
     }
 
@@ -68,7 +68,7 @@ class BedController extends Controller
     {
         $bed->delete();
 
-        return back()->with('feedback', 'del เตียงสำเร็จแล้ว ' . $bed->room->name);
+        return back()->with('feedback', 'Del เตียง'.$bed->no.' '. $bed->room->name. ' สำเร็จแล้ว '  );
     }
 
     public function edit(Bed $bed)

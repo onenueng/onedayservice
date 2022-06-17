@@ -18,6 +18,10 @@
         <div class="row">
             <div class="col-6">
                 <h1>รายละเอียด Clinic</h1>
+
+                @if(session('feedback'))
+                    <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
+                @endif
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -43,9 +47,14 @@
                                 <button type="button" class="btn btn-primary">Edit</button>
                                 </a>
                             </td>
-                            <td><a href="{{ route('clinic.show', $clinic) }}">
-                                <button type="button" class="btn btn-primary">Del</button>
-                                </a>
+                            <td>
+                                <form action="{{ route('clinic.destroy', $clinic) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-primary">Del</button>
+                                </form>
+                                {{-- <a href="{{ route('clinic.destroy', $clinic) }}"><button type="submit" class="btn btn-primary">Del</button>
+                                </a> --}}
                             </td>
                         </tr>
                         @endforeach
