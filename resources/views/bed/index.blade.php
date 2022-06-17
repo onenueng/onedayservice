@@ -17,6 +17,7 @@
         <div class="row">
             <div class="col-6">
                 <h1>รายละเอียด Bed</h1>
+                {{ session('feedback', null) }}
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -41,11 +42,16 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('bed.show', $bed) }}"><button type="button" class="btn btn-primary">Edit</button>
+                                <a href="{{ route('bed.edit', $bed) }}"><button type="button" class="btn btn-primary">Edit</button>
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('bed.show', $bed) }}"><button type="button" class="btn btn-primary">Del</button>
+                                <form action="{{ route('bed.destroy', $bed) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-primary">Del</button>
+                                </form>
+                                <!-- <a href="{{ route('bed.show', $bed) }}"><button type="button" class="btn btn-primary">Del</button> -->
                                 </a>
                             </td>
                         </tr>

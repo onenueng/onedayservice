@@ -47,8 +47,11 @@ Route::post('/room', [RoomController::class,'store'])->name('room.store');
 
 Route::get('/bed', [BedController::class,'index'])->name('bed');
 Route::get('/bed/create', [BedController::class,'create'])->name('bed.create');
+Route::get('/bed/{bed}/edit', [BedController::class,'edit'])->name('bed.edit');
 Route::get('/bed/{bed}', [BedController::class,'show'])->name('bed.show');
 Route::post('/bed', [BedController::class,'store'])->name('bed.store');
+Route::delete('/bed/{bed}', [BedController::class,'destroy'])->name('bed.destroy');
+Route::patch('/bed/{bed}', [BedController::class,'update'])->name('bed.update');
 
 
 

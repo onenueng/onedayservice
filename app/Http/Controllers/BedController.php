@@ -11,7 +11,7 @@ class BedController extends Controller
 {
     public function create()
     {
-        return view('bed')->with([
+        return view('bed.create')->with([
             //'beds'=> Bed::all(),//ไม่ต้องส่งค่าเพราะไม่ได้ทำ drop list
             'rooms'=> Room::all() // ส่งค่าเพื่อทำ drop list
         ]);
@@ -62,5 +62,37 @@ class BedController extends Controller
         // return $bed;
       
         return view('bed.show')->with(['bed' => $bed]);
+    }
+
+    public function destroy(Bed $bed)
+    {
+        $bed->delete();
+
+        return back()->with('feedback', 'del เตียงสำเร็จแล้ว ' . $bed->room->name);
+    }
+
+    public function edit(Bed $bed)
+    {
+        return view('bed.edit')->with([
+            'bed' => $bed,
+            'rooms'=> Room::all()
+        ]);
+    }
+
+    public function update(Bed $bed)
+    {
+        $validated = request()->validate([ // candidate key [no + room_id] => beds
+            'no' => [
+                'required',
+                Rule::unique('beds')->where(fn ($query) => $query->where('room_id', request()->room_id)),
+                'max:255'
+            ],
+            'room_id' => 'required|exists:rooms,id',
+            'type' => 'required'
+        ]);
+
+        $bed->update($validated);
+
+        return redirect()->route('bed')->with('feedback', 'update เตียงสำเร็จแล้ว ');
     }
 }
