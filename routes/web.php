@@ -40,11 +40,13 @@ Route::get('/procedure',[ProcedureController::class,'index'])->name('procedure')
 Route::get('/procedure/create',[ProcedureController::class,'create'])->name('procedure.create');
 Route::get('/procedure/{procedure}', [ProcedureController::class,'show'])->name('procedure.show');
 Route::post('/procedure',[ProcedureController::class,'store'])->name('procedure.store');
+Route::delete('/procedure/{procedure}',[ProcedureController::class,'destroy'])->name('procedure.destroy');
 
 Route::get('/room',[RoomController::class,'index'])->name('room');
 Route::get('/room/create',[RoomController::class,'create'])->name('room.create');
 Route::get('/room/{room}',[RoomController::class,'show'])->name('room.show');
 Route::post('/room', [RoomController::class,'store'])->name('room.store');
+Route::delete('/room/{room}', [RoomController::class,'destroy'])->name('room.destroy');
 
 Route::get('/bed', [BedController::class,'index'])->name('bed');
 Route::get('/bed/create', [BedController::class,'create'])->name('bed.create');

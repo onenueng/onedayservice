@@ -57,6 +57,15 @@ class ProcedureController extends Controller
     {
         return view('procedure.show')->with(['procedure' => $procedure]);
     }
+
+    public function destroy(Procedure $procedure)
+    {
+        $procedure->delete();
+
+        return back()->with('feedback', ' ลบหัตถการ '.$procedure->name. ' สำเร็จแล้ว');
+
+    }
+
 }
 
 

@@ -54,4 +54,12 @@ class RoomController extends Controller
     {
         return view('room.show')->with(['room' => $room]);
     }
+
+    public function destroy(Room $room)
+    {
+        $room->delete();
+
+        return back()->with('feedback', ' ลบห้อง '.$room->name. ' สำเร็จแล้ว');
+
+    }
 }

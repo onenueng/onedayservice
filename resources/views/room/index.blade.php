@@ -18,6 +18,10 @@
         <div class="row">
             <div class="col-6">
                 <h1>รายละเอียด Room</h1>
+
+                @if(session('feedback'))
+                    <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
+                @endif
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -39,8 +43,17 @@
                                         type="button">Show</button> </a></td>
                             <td><a href=" {{ route('room.show', $room)}} "> <button class="btn btn-primary"
                                         type="button">Edit</button> </a></td>
-                            <td><a href=" {{ route('room.show', $room)}} "> <button class="btn btn-primary"
-                                        type="button">Del</button> </a></td>
+                            <td>
+                                <form action="{{ route('room.destroy', $room)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-primary"
+                                    type="submit">Del</button> </a></td>
+                                </form>
+
+                                {{-- <a href=" {{ route('room.show', $room)}} "> <button class="btn btn-primary"
+                                        type="button">Del</button> </a> --}}
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
