@@ -66,6 +66,31 @@ class ProcedureController extends Controller
 
     }
 
+    public  function edit(Procedure $procedure)
+    {
+        return view('procedure.edit')->with([
+            'procedure'=> $procedure,
+            'clinics' => Clinic::all()
+        ]);
+    }
+
+    public function update(Procedure $procedure)
+    {
+        $data = request()->all();
+        $validated = request()->validate([
+            'name' => [
+                'required',
+                Rule::unique('procedures')->where(fn ($query) => $query->where('clinic_id', $data['clinic_id'])),
+                'max:255'
+            ],
+            'clinic_id' => 'required|exists:clinics,id',
+        ]);
+
+        $procedure->update($validated);
+
+        return redirect()->route('procedure')->with('feedback', 'update หัตถการสำเร็จแล้ว ');
+    }
+
 }
 
 

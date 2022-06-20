@@ -23,6 +23,14 @@
                     <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
                 @endif
 
+
+                <div class="row">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-primary" role="button" href="{{ route('procedure.create') }}">เพิ่มหัตถการ</a>
+                    </div>
+
+                </div>
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -44,7 +52,7 @@
                                     <button type="button" class="btn btn-primary">Show</button>
                                 </a>
                             </td>
-                            <td><a href="{{ route('procedure.show', $procedure) }}">
+                            <td><a href="{{ route('procedure.edit', $procedure) }}">
                                     <button type="button" class="btn btn-primary">Edit</button>
                                 </a>
                             </td>

@@ -62,4 +62,20 @@ class RoomController extends Controller
         return back()->with('feedback', ' ลบห้อง '.$room->name. ' สำเร็จแล้ว');
 
     }
+
+    public function edit(Room $room)
+    {
+        return view('room.edit')->with(['room'=> $room]);
+    }
+
+    public function update(Room $room)
+    {
+        $validated = request()->validate([
+            'name_short' => 'required|unique:rooms|max:255',
+            'name' => 'required|unique:rooms|max:255',
+        ]);
+
+        $room->update($validated);
+        return redirect()->route('room')->with('feedback', 'update ห้องสำเร็จแล้ว ');
+    }
 }

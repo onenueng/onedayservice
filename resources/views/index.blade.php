@@ -18,10 +18,10 @@
         @endif
 
         <a class="btn btn-primary" role="button" href="booking">จองเตียง</a>
-        <a class="btn btn-primary" role="button" href="room">เพิ่มห้อง</a>
-        <a class="btn btn-primary" role="button" href="clinic">เพิ่มคลินิก</a>
-        <a class="btn btn-primary" role="button" href="procedure">เพิ่มหัตถการ</a>
-        <a class="btn btn-primary" role="button" href="bed">เพิ่มเตียง</a>
+        <a class="btn btn-primary" role="button" href="room">ห้อง</a>
+        <a class="btn btn-primary" role="button" href="clinic">คลินิก</a>
+        <a class="btn btn-primary" role="button" href="procedure">หัตถการ</a>
+        <a class="btn btn-primary" role="button" href="bed">เตียง</a>
 
     </div>
 </body>

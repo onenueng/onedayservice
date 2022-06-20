@@ -11,7 +11,7 @@ class ClinicController extends Controller
 {
     public function create()
     {
-        return view('clinic');
+        return view('clinic.create');
     }
 
 
@@ -64,5 +64,21 @@ class ClinicController extends Controller
         $clinic->delete();
 
         return back()->with('feedback', ' ลบคลินิก '.$clinic->name. ' สำเร็จแล้ว');
+    }
+
+    public function edit(Clinic $clinic)
+    {
+        return view('clinic.edit')->with(['clinic'=> $clinic]);
+    }
+
+    public function update(Clinic $clinic)
+    {
+        $validated = request()->validate([
+            'code' => 'required|max:6',
+            'name' => 'required|unique:clinics|max:255',
+        ]);
+
+        $clinic->update($validated);
+        return redirect()->route('clinic')->with('feedback', 'update คลินิกสำเร็จแล้ว ');
     }
 }

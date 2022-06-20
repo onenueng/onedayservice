@@ -22,6 +22,14 @@
                 @if(session('feedback'))
                     <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
                 @endif
+
+                <div class="row">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-primary" role="button" href="{{ route('clinic.create') }}">เพิ่มคลินิก</a>
+                    </div>
+
+                </div>
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -43,7 +51,7 @@
                                 <button type="button" class="btn btn-primary">show</button>
                                 </a>
                             </td>
-                            <td><a href="{{ route('clinic.show', $clinic) }}">
+                            <td><a href="{{ route('clinic.edit', $clinic) }}">
                                 <button type="button" class="btn btn-primary">Edit</button>
                                 </a>
                             </td>
