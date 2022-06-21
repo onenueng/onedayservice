@@ -40,7 +40,7 @@
             <select name="clinic_id" id="clinic_id" class="form-select">
                 <option selected value="">--กรุณาเลือกคลินิก--</option>
                 @foreach ($clinics as $clinic)
-                <option value="{{ $clinic->id  }}" {{ old('clinic_id',$clinic) == $clinic->id,$clinic  ? 'selected' : '' }}> {{ $clinic->name}}</option>
+                <option value="{{ $clinic->id  }}" {{ old('clinic_id',$procedure) == $clinic->id  ? 'selected' : '' }}> {{ $clinic->name}}</option>
                 @endforeach
                 <option value="100">foo clinic</option>
 
