@@ -44,6 +44,7 @@ Route::get('/procedure/{procedure}/edit', [procedureController::class,'edit'])->
 Route::get('/procedure/{procedure}', [ProcedureController::class,'show'])->name('procedure.show');
 Route::post('/procedure',[ProcedureController::class,'store'])->name('procedure.store');
 Route::delete('/procedure/{procedure}',[ProcedureController::class,'destroy'])->name('procedure.destroy');
+Route::patch('/procedure/{procedure}',[ProcedureController::class,'update'])->name('procedure.update');
 
 Route::get('/room',[RoomController::class,'index'])->name('room');
 Route::get('/room/create',[RoomController::class,'create'])->name('room.create');

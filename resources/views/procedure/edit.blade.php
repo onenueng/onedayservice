@@ -28,8 +28,9 @@
         @endif
 
 
-        <form action="/procedure" method="post">
-         @csrf
+        <form action="{{ route('procedure.update', $procedure) }}" method="post">
+            @csrf
+            @method('patch')
 
          <div class="mb-3 col-sm-4">
             <label for="name" class="form-label"> ชื่อหัตถการ</label>
