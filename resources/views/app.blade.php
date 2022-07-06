@@ -13,23 +13,23 @@
 </head>
 <body>
     <!-- nav menu -->
-    <nav>
+    {{-- <nav>
         <ul>
             <li><a href="#">menu1</a></li>
             <li><a href="#">menu2</a></li>
             <li><a href="#">menu3</a></li>
             <li><a href="#">menu4</a></li>
         </ul>
-    </nav>
+    </nav> --}}
     @yield('content')
     <!-- footer -->
-    <nav>
+    {{-- <nav>
         <ul>
             <li><a href="#">footer link 1</a></li>
             <li><a href="#">footer link 2</a></li>
             <li><a href="#">footer link 3</a></li>
             <li><a href="#">footer link 4</a></li>
         </ul>
-    </nav>
+    </nav> --}}
 </body>
 </html>
