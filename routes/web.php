@@ -24,9 +24,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/booking', [BookingController::class, 'create']); // create-form
+Route::get('/booking', [BookingController::class,'index'])->name('booking');
+Route::get('/booking/create', [BookingController::class, 'create'])->name('booking.create'); // create-form
+Route::get('/booking/{booking}/edit', [BookingController::class,'edit'])->name('booking.edit'); //กดเข้าไปเพื่อเปิด form ที่มีข้อมูลของ record ที่เราต้องการ edit
 Route::get('/booking/{id}', [BookingController::class, 'show']); // read
 Route::post('/booking', [BookingController::class, 'store']); // create-insert to table
+Route::delete('/booking/{booking}', [BookingController::class,'destroy'])->name('booking.destroy');
 
 Route::get('/home', HomeController::class)->name('home');
 
