@@ -58,7 +58,7 @@
                             <td>{{ $booking->bed_id }}</td>
                             <td>{{ $booking->room->name_short }}</td>
                             <td>{{ $booking->clinic->name }}</td>
-                            <td>{{ $booking->procedure_id}}</td>
+                            <td>{{ $booking->procedure->name}}</td>
                             <td>{{ $booking->patient_id }}</td>
                             <td>{{ $booking->patient->full_name }}</td>
                             <td>

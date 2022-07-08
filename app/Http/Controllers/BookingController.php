@@ -79,9 +79,9 @@ class BookingController extends Controller
         $procedures = Procedure::all();
         
         return view('booking.index')->with([
-                                            'bookings' => $bookings,
-                                            'procedures'=> $procedures
-                                            ]);
+                'bookings' => $bookings,
+                'procedures'=> $procedures
+                ]);
     }
 
 
@@ -94,7 +94,10 @@ class BookingController extends Controller
 
     public function edit(ฺBooking $booking)
     {
-        return view('booking.edit')->with(['booking'=> $booking]);
+        return view('booking.edit')->with([
+            'bookings' => $bookings,
+            'procedures'=> $procedures
+            ]);
     }
 
     public function update(Booking $booking)

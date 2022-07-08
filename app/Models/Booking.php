@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
+    protected $fillable = ['datetime_start', 'time', 'bed_id', 'procedure_id'];
 
     public function patient()
     {
@@ -29,7 +30,7 @@ class Booking extends Model
         return $this->belongsTo(Clinic::class);
     }
 
-    public function procedures()
+    public function procedure()
     {
         return $this->belongsTo(Procedure::class);
     }
