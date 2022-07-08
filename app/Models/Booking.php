@@ -31,7 +31,7 @@ class Booking extends Model
 
     public function procedures()
     {
-        return $this->hasMany(Procedure::class);
+        return $this->belongsTo(Procedure::class);
     }
 
     public function user()

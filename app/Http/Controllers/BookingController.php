@@ -76,10 +76,11 @@ class BookingController extends Controller
     {
         
         $bookings = Booking::all();
+        $procedures = Procedure::all();
         
         return view('booking.index')->with([
                                             'bookings' => $bookings,
-                                            'procedures'=> Procedure::all()
+                                            'procedures'=> $procedures
                                             ]);
     }
 
