@@ -9,10 +9,11 @@ use App\Models\Booking;
 
 class BookingController extends Controller
 {
+
     // CRUD => create(GET create | POST store), read (GET resource/{id} show) update delete
     public function create()
     {
-        return view('booking')->with([
+        return view('booking.create')->with([
             'beds'=> Bed::all(),
             'procedures'=> Procedure::all()
         ]);
@@ -61,7 +62,7 @@ class BookingController extends Controller
         // week_day
         $booking->week_day = now()->parse($data['datetime_start'])->weekDay();
         $booking->user_id = 1;
-        $booking->save(); //insert data
+        $booking->save(); //insert record นี้เข้าไปในตาราง
 
         return redirect()->route('home')->with('feedback', 'จองเตียงสำเร็จแล้ว');
     }
@@ -70,4 +71,40 @@ class BookingController extends Controller
     {
         return Booking::find($id);
     }
+
+    public function index()
+    {
+        $bookings = Booking::all();
+        return view('booking.index')->with(['bookings' => $bookings]);
+    }
+
+
+    public function destroy(Booking $booking)
+    {
+        $booking->delete();
+
+        return back()->with('feedback', ' ลบ booking  '.$booking->name. ' สำเร็จแล้ว');
+    }
+
+    public function edit(ฺBooking $booking)
+    {
+        return view('booking.edit')->with(['booking'=> $booking]);
+    }
+
+    public function update(Booking $booking)
+    {
+        $validated = request()->validate([
+            'datetime_start' => 'required',
+            'time'           => 'required',
+            'bed_id'         => 'required',
+            'procedure_id'   => 'required'
+        ]);
+
+        $booking->update($validated);
+        return redirect()->route('booking')->with('feedback', 'update booking สำเร็จแล้ว ');
+    }
+
+
+
+
 }
