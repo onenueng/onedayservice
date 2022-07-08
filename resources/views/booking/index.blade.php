@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <h1>รายละเอียดการจอง</h1>
 
                 @if(session('feedback'))
@@ -36,12 +36,13 @@
                             <th scope="col">#</th>
                             <th scope="col">วันที่เริ่มต้น</th>
                             <th scope="col">วันที่สิ้นสุด</th>
-                            <th scope="col">วันประจำสัปดาห์</th>
-                            <th scope="col">ห้อง</th>
+                            <th scope="col">วัน</th>
                             <th scope="col">เตียง</th>
+                            <th scope="col">ห้อง</th>
                             <th scope="col">คลินิก</th>
                             <th scope="col">หัตถการ</th>
                             <th scope="col">HN</th>
+                            <th scope="col">Name</th>
 
                             <th scope="col">Edit</th>
                             <th scope="col">Del</th>
@@ -54,11 +55,12 @@
                             <td>{{ $booking->datetime_start }}</td>
                             <td>{{ $booking->datetime_stop }}</td>
                             <td>{{ $booking->week_day }}</td>
-                            <td>{{ $booking->room_id }}</td>
                             <td>{{ $booking->bed_id }}</td>
-                            <td>{{ $booking->clinic_id }}</td>
-                            <td>{{ $booking->procedure_id }}</td>
+                            <td>{{ $booking->room->name_short }}</td>
+                            <td>{{ $booking->clinic->name }}</td>
+                            <td>{{ $booking->procedue_id}}</td>
                             <td>{{ $booking->patient_id }}</td>
+                            <td>{{ $booking->patient->full_name }}</td>
                             <td>
                                 <a href="{{ route('booking.edit', $booking) }}"><button type="button" class="btn btn-primary">Edit</button>
                                 </a>
