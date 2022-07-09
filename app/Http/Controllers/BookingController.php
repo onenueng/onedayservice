@@ -7,6 +7,7 @@ use App\Models\Bed;
 use App\Models\Procedure;
 use App\Models\Booking;
 
+
 class BookingController extends Controller
 {
 
@@ -67,17 +68,12 @@ class BookingController extends Controller
         return redirect()->route('home')->with('feedback', 'จองเตียงสำเร็จแล้ว');
     }
 
-    public function show($id)
-    {
-        return Booking::find($id);
-    }
 
     public function index()
     {
-        
         $bookings = Booking::all();
         $procedures = Procedure::all();
-        
+
         return view('booking.index')->with([
                 'bookings' => $bookings,
                 'procedures'=> $procedures
@@ -89,28 +85,29 @@ class BookingController extends Controller
     {
         $booking->delete();
 
-        return back()->with('feedback', ' ลบ booking  '.$booking->name. ' สำเร็จแล้ว');
+        return back()->with('feedback', ' ลบ booking  no.'.$booking->id. ' สำเร็จแล้ว');
     }
 
     public function edit(ฺBooking $booking)
     {
         return view('booking.edit')->with([
-            'bookings' => $bookings,
-            'procedures'=> $procedures
+            'booking' => $booking,
+            'beds' => Bed::all(),
+            'procedures'=> Procedure::all()
             ]);
     }
+
 
     public function update(Booking $booking)
     {
         $validated = request()->validate([
             'datetime_start' => 'required',
-            'time'           => 'required',
-            'bed_id'         => 'required',
-            'procedure_id'   => 'required'
+            'time'           => 'required'
         ]);
 
         $booking->update($validated);
-        return redirect()->route('booking')->with('feedback', 'update booking สำเร็จแล้ว ');
+
+        return redirect()->route('booking')->with('feedback', 'update booking no'. $booking->id .' สำเร็จแล้ว ');
     }
 
 
