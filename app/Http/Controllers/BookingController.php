@@ -88,7 +88,7 @@ class BookingController extends Controller
         return back()->with('feedback', ' ลบ booking  no.'.$booking->id. ' สำเร็จแล้ว');
     }
 
-    public function edit(ฺBooking $booking)
+    public function edit(Booking $booking)
     {
         return view('booking.edit')->with([
             'booking' => $booking,
