@@ -56,6 +56,7 @@
                     @endforeach
                     {{-- {{ $procedure }} --}}
                 </tbody>
+            </table>
         </div>
     </div>
 </div>
