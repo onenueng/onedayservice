@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+    @include('partials.menu')
 
     <h1>Room : Edit</h1>
 
@@ -13,5 +14,6 @@
         @method('patch')
         @include('room.form')
     </form>
+    @include('partials.footer')
 </div>
 @endsection

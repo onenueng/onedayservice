@@ -4,8 +4,10 @@
 
 @section('content')
 <div class="container">
+    @include('partials.menu')
     <div class="row">
-        <div class="col-6">
+        <div class="col-8">
+
             <h1>รายละเอียด Room</h1>
 
             @if(session('feedback'))
@@ -57,6 +59,7 @@
             </table>
         </div>
     </div>
+    @include('partials.footer')
 </div>
 
 @endsection

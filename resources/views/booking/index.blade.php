@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+    @include('partials.menu')
     <div class="row">
         <div class="col-12">
             <h1>รายละเอียดการจอง</h1>
@@ -71,5 +72,6 @@
             </table>
         </div>
     </div>
+    @include('partials.footer')
 </div>
 @endsection

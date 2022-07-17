@@ -1,9 +1,10 @@
 @extends('app')
 
-@section('title','Room -'.$room->name_short)
+@section('title','create room')
 
 @section('content')
 <div class="container">
+    @include('partials.menu')
 
     <h1>Room : create</h1>
 
@@ -12,5 +13,7 @@
     <form action="/room" method="post">
     @include('room.form')
     </form>
+
 </div>
+@include('partials.footer')
 @endsection

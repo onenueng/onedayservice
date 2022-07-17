@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+    @include('partials.menu')
     <h1>Bed : Create</h1>
 
     @include('partials.form-feedback')
@@ -12,5 +13,6 @@
      @include('bed.form')
 
     </form>
+    @include('partials.footer')
 </div>
 @endsection

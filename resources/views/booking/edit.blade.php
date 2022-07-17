@@ -4,6 +4,7 @@
 
     @section('content')
     <div class="container">
+        @include('partials.menu')
         <h1>Booking : Edit</h1>
 
         @include('partials.form-feedback')
@@ -14,6 +15,7 @@
                 @include('booking.form')
 
             </form>
+            @include('partials.footer')
     </div>
 
     @endsection

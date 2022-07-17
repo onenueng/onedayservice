@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+    @include('partials.menu')
     <div class="row">
         <div class="col-6">
     <h1>รายละเอียด Clinic</h1>
@@ -24,5 +25,6 @@
         </tbody>
         </div>
     </div>
+    @include('partials.footer')
 </div>
 @endsection

@@ -5,7 +5,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-6">
+        <div class="col-8">
+            @include('partials.menu')
             <h1>รายละเอียด Room</h1>
             <table class="table table-striped">
                 <tbody>
@@ -24,6 +25,9 @@
                     </tr>
                 </tbody>
         </div>
+
     </div>
+    @include('partials.footer')
 </div>
+
 @endsection

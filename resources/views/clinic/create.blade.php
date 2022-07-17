@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+    @include('partials.menu')
 
     <h1>Clinic</h1>
 
@@ -12,5 +13,6 @@
     <form action="/clinic" method="post">
         @include('clinic.form')
     </form>
+    @include('partials.footer')
 </div>
 @endsection
