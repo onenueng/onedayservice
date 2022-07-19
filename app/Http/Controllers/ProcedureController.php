@@ -12,7 +12,7 @@ class ProcedureController extends Controller
     //
     public function create()
     {
-        return view('procedure')->with([
+        return view('procedure.create')->with([
             'procedures'=> Procedure::all(),
             'clinics'=> Clinic::all()
         ]);

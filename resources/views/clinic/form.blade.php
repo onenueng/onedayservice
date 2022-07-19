@@ -10,4 +10,5 @@
 </div>
 <div class="mb-3 col-sm-4">
     <input type="submit" value ="submit" class="btn btn-primary">
+    <td><a href="{{ route('clinic') }}"><button type="button" class="btn btn-primary">back</button></a></td>
 </div>

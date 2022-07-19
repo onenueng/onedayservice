@@ -23,9 +23,8 @@
                         <td><a href="{{ route('procedure') }}"><button type="button" class="btn btn-primary">back</button></a></td>
                     </tr>
             </tbody>
+        </table>
+        @include('partials.footer')
         </div>
     </div>
-
-</div>
-@include('partials.footer')
 @endsection

@@ -6,7 +6,7 @@
 <div class="container">
     @include('partials.menu')
 
-    <h1>Clinic</h1>
+    <h1>Clinic : Create</h1>
 
     @include('partials.form-feedback')
 

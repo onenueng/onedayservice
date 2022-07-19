@@ -27,5 +27,8 @@
     </div>
 
     <div class="mb-3 col-sm-4">
-        <input type="submit" value ="submit" class="btn btn-primary">
+        <tr>
+        <td><input type="submit" value ="submit" class="btn btn-primary"></td>
+        <td><a href="{{ route('bed') }}"><button type="button" class="btn btn-primary">back</button></a></td>
+        </tr>
     </div>

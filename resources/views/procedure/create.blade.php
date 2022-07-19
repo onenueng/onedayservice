@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title','Procedure - '.$procedure->name)
+@section('title','Procedure')
 
 @section('content')
 <div class="container">

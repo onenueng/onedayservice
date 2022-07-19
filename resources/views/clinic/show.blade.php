@@ -23,8 +23,8 @@
                 <td><a href="{{ route('clinic') }}"><button type="button" class="btn btn-primary">back</button></a></td>
             </tr>
         </tbody>
-        </div>
-    </div>
+    </table>
     @include('partials.footer')
+    </div>
 </div>
 @endsection

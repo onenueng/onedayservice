@@ -26,8 +26,13 @@
                     <td><a href="{{ route('bed') }}"><button type="button" class="btn btn-primary">back</button></a></td>
                 </tr>
             </tbody>
+        </table>
+        @include('partials.footer')
+
         </div>
+
     </div>
-    @include('partials.footer')
 </div>
+
 @endsection
+

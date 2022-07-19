@@ -34,7 +34,7 @@
                         <th scope="col">HN</th>
                         <th scope="col">Name</th>
 
-                        <th scope="col">Edit</th>
+                        {{-- <th scope="col">Edit</th> --}}
                         <th scope="col">Del</th>
                     </tr>
                 </thead>
@@ -51,10 +51,10 @@
                         <td>{{ $booking->procedure->name}}</td>
                         <td>{{ $booking->patient_id }}</td>
                         <td>{{ $booking->patient->full_name }}</td>
-                        <td>
+                        {{-- <td>
                             <a href="{{ route('booking.edit', $booking) }}"><button type="button" class="btn btn-primary">Edit</button>
                             </a>
-                        </td>
+                        </td> --}}
                         <td>
                             <form action="{{ route('booking.destroy', $booking) }}" method="post">
                                 @csrf
