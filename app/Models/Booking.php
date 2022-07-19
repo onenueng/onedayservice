@@ -9,6 +9,10 @@ class Booking extends Model
 {
     use HasFactory;
     protected $fillable = ['datetime_start', 'time', 'bed_id', 'procedure_id'];
+    protected $casts = [
+        'datetime_start' => 'datetime',
+        'datetime_stop' => 'datetime',
+    ];
 
     public function patient()
     {
@@ -38,6 +42,18 @@ class Booking extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getDateLabelAttribute()
+    {
+        $start = $this->datetime_start->locale('th');
+        $thYear = $start->year + 543;
+        return "{$start->dayName} {$start->day}/{$start->shortMonthName}/{$thYear}";
+    }
+
+    public function getTimeLabelAttribute()
+    {
+        return $this->datetime_start->hour === 9 ? 'เช้า' : 'บ่าย';
     }
 
 

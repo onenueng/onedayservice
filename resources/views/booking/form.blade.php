@@ -8,11 +8,11 @@
         <label for="time" class="form-label">เวลา</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="time" id="time1" {{ old('time',$booking ?? null) == 'morning' ? 'checked' : '' }} value="morning">
+        <input class="form-check-input" type="radio" name="time_label" id="time1" {{ old('time_label',$booking ?? null) == 'เช้า' ? 'checked' : '' }} value="morning">
         <label class="form-check-label" for="time1" >เช้า</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio"  name="time" id="time2" {{ old('time',$booking ?? null) == 'afternoon' ? 'checked' : '' }} value="afternoon">
+        <input class="form-check-input" type="radio"  name="time_label" id="time2" {{ old('time_label',$booking ?? null) == 'บ่าย' ? 'checked' : '' }} value="afternoon">
         <label class="form-check-label" for="time2">บ่าย</label>
     </div>
     <div class="mb-3" >

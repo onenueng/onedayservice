@@ -8,19 +8,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="booking">จองเตียง</a>
+            <a class="nav-link active" aria-current="page" href="{{ route('booking') }}">จองเตียง</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="room">ห้อง</a>
+            <a class="nav-link" href="{{ route('room') }}">ห้อง</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="clinic">คลินิก</a>
+            <a class="nav-link" href="{{ route('clinic') }}">คลินิก</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="procedure">หัตถการ</a>
+            <a class="nav-link" href="{{ route('procedure') }}">หัตถการ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="bed">เตียง</a>
+            <a class="nav-link" href="{{ route('bed') }}">เตียง</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -28,6 +28,13 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
+
     </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+        </ul>
+      </div>
   </nav>
   <!--end nav bar menu-->
