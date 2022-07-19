@@ -23,9 +23,9 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">วันที่เริ่มต้น</th>
-                        <th scope="col">วันที่สิ้นสุด</th>
-                        <th scope="col">วัน</th>
+                        <th scope="col">วันที่</th>
+                        <!-- <th scope="col">วันที่สิ้นสุด</th> -->
+                        <th scope="col">เวลา</th>
                         <th scope="col">เตียง</th>
                         <th scope="col">ห้อง</th>
                         <th scope="col">คลินิก</th>
@@ -41,9 +41,9 @@
                     @foreach($bookings as $booking)
                     <tr>
                         <th scope="row"> {{ $booking->id }}</th>
-                        <td>{{ $booking->datetime_start }}</td>
-                        <td>{{ $booking->datetime_stop }}</td>
-                        <td>{{ $booking->week_day }}</td>
+                        <td>{{ $booking->date_label }}</td>
+                        <!-- <td>{{ $booking->datetime_stop }}</td> -->
+                        <td>{{ $booking->time_label }}</td>
                         <td>{{ $booking->bed_id }}</td>
                         <td>{{ $booking->room->name_short }}</td>
                         <td>{{ $booking->clinic->name }}</td>
