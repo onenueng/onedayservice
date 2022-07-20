@@ -8,6 +8,7 @@ use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,14 @@ Route::patch('/booking/{booking}', [BookingController::class,'update'])->name('b
 
 Route::get('/home', HomeController::class)->name('home');
 // Route::get('/home', [BookingController::class,'index'])->name('booking');
+
+Route::get('/user', UserController::class)->name('user');
+
+
+
+// Route::get('/user', function(){
+//     return view('user');
+// });
 
 Route::get('/clinic', [ClinicController::class,'index'])->name('clinic'); //เป็นหน้า index เพื่อแสดงข้อมูลทั้งหมด
 Route::get('/clinic/create', [ClinicController::class,'create'])->name('clinic.create');
