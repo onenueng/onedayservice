@@ -9,6 +9,9 @@ class UserController extends Controller
 {
     public function __invoke()
     {
-        return view('user');
+        $users = User::all();
+        return view('user')->with([
+            'users' => $users
+            ]);
     }
 }

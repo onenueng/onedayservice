@@ -36,6 +36,9 @@ Route::get('/home', HomeController::class)->name('home');
 // Route::get('/home', [BookingController::class,'index'])->name('booking');
 
 Route::get('/user', UserController::class)->name('user');
+Route::get('/user/show', function(){
+    return view('user.show');
+});
 
 
 
