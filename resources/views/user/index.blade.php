@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="container">
+        @include('partials.menu')
         <div class="row">
             <h6>User:</h6>
             <table class="table table-striped">
@@ -25,7 +26,8 @@
                             <td>{{ $user->name}}</td>
                             <td>{{ $user->full_name}}</td>
                             <td>
-                                <button type="button" class="btn btn-primary">Show</button>
+                                <a href=" {{ route('user.show', $user)}} "> <button class="btn btn-primary"
+                                    type="button">Show</button> </a>
 
                             </td>
 
@@ -36,8 +38,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                @include('partials.footer')
         </div>
-        @include('partials.footer')
+
     </div>
 
     @endsection
