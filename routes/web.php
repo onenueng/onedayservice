@@ -37,9 +37,17 @@ Route::get('/home', HomeController::class)->name('home');
 
 Route::get('/user', UserController::class)->name('user');
 Route::get('/user/{user}', [UserController::class,'show'])->name('user.show');
-// Route::get('/user', function(){
-//     return view('user.index');
+
+Route::get('/login', UserController::class)->name('login');
+// Route::get('/auth', function()
+// {
+//     return view('auth.login')->with([
+//         'users'=> User::all()
+//     ]);
+
 // });
+
+
 
 
 

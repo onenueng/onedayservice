@@ -19,6 +19,11 @@ class UserController extends Controller
         return view('user.show')->with(['user' => $user]);
     }
 
+    public function login(User $user)
+    {
+        $users = User::all();
+        return view('auth.login')->with(['user'=>$user]);
+    }
 
 }
 
