@@ -10,8 +10,10 @@ class UserController extends Controller
     public function __invoke()
     {
         $users = User::all();
-        return view('user')->with([
-            'users' => $users
-            ]);
+        return view('user.index')->with(['users' => $users]);
+
     }
+
+
 }
+

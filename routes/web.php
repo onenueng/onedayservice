@@ -36,15 +36,11 @@ Route::get('/home', HomeController::class)->name('home');
 // Route::get('/home', [BookingController::class,'index'])->name('booking');
 
 Route::get('/user', UserController::class)->name('user');
-Route::get('/user/show', function(){
-    return view('user.show');
-});
-
-
-
 // Route::get('/user', function(){
-//     return view('user');
+//     return view('user.index');
 // });
+
+
 
 Route::get('/clinic', [ClinicController::class,'index'])->name('clinic'); //เป็นหน้า index เพื่อแสดงข้อมูลทั้งหมด
 Route::get('/clinic/create', [ClinicController::class,'create'])->name('clinic.create');
