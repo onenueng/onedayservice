@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function __invoke()
+
+    public function index()
     {
         $users = User::all();
+
         return view('user.index')->with(['users' => $users]);
 
     }
@@ -19,11 +21,13 @@ class UserController extends Controller
         return view('user.show')->with(['user' => $user]);
     }
 
-    public function login(User $user)
-    {
-        $users = User::all();
-        return view('auth.login')->with(['user'=>$user]);
-    }
+
+
+    // public function login(User $user)
+    // {
+    //     $users = User::all();
+    //     return view('auth.login')->with(['user'=>$user]);
+    // }
 
 }
 

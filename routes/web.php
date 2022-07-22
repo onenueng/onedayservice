@@ -9,6 +9,9 @@ use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PatientController;
+use App\Models\Patient;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,18 +38,32 @@ Route::patch('/booking/{booking}', [BookingController::class,'update'])->name('b
 Route::get('/home', HomeController::class)->name('home');
 // Route::get('/home', [BookingController::class,'index'])->name('booking');
 
-Route::get('/user', UserController::class)->name('user');
+Route::get('/user', [UserController::class,'index'])->name('user');
 Route::get('/user/{user}', [UserController::class,'show'])->name('user.show');
 
-Route::get('/login', UserController::class)->name('login');
-// Route::get('/auth', function()
+//Route::get('/login', UserController::class)->name('login');
+
+// Route::get('/login', function()
 // {
-//     return view('auth.login')->with([
-//         'users'=> User::all()
+//     return view('login')->with([
+//         'users'=> App\Models\User::all()
 //     ]);
 
 // });
 
+Route::get('/patient', [PatientController::class,'index'])->name('patient');
+Route::get('/patient/{patient}', [PatientController::class,'show'])->name('patient.show');
+// Route::get('/patient', function()
+// {
+//     $patients = Patient::all();
+
+//     return view('patient.index')->with([
+//         'patients'=> $patients
+//     ]);
+
+
+
+// });
 
 
 
