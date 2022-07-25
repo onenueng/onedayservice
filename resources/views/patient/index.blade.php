@@ -34,6 +34,10 @@
                                 type="button">Show</button> </a>
 
                         </td>
+                        <td><a href="{{ route('patient.edit', $patient) }}">
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            </a>
+                        </td>
 
                         <td>
                             <button type="button" class="btn btn-primary">Edit</button>

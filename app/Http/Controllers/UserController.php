@@ -21,6 +21,25 @@ class UserController extends Controller
         return view('user.show')->with(['user' => $user]);
     }
 
+    public function edit(User $user)
+    {
+        return view('user.edit')->with(['user'=> $user]);
+    }
+
+    public function update(User $user)
+    {
+        $validated = request()->validate([
+            'sap_id' => 'required|max:8',
+            'name' => 'required|unique:users|max:255',
+            'full_name' => 'required|max:255',
+            // 'full_name' => 'required|unique:users|max:255',
+        ]);
+
+        $user->update($validated);
+        return redirect()->route('user')->with('feedback', 'update Userสำเร็จแล้ว ');
+    }
+
+
 
 
     // public function login(User $user)
@@ -30,4 +49,3 @@ class UserController extends Controller
     // }
 
 }
-

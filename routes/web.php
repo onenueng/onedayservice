@@ -40,19 +40,21 @@ Route::get('/home', HomeController::class)->name('home');
 
 Route::get('/user', [UserController::class,'index'])->name('user');
 Route::get('/user/{user}', [UserController::class,'show'])->name('user.show');
+Route::get('/user/{user}/edit', [UserController::class,'edit'])->name('user.edit'); //กดเข้าไปเพื่อเปิด form ที่มีข้อมูลของ record ที่เราต้องการ edit
+Route::patch('/user/{user}', [UserController::class,'update'])->name('user.update');
 
 //Route::get('/login', UserController::class)->name('login');
 
-// Route::get('/login', function()
-// {
-//     return view('login')->with([
-//         'users'=> App\Models\User::all()
-//     ]);
+Route::get('/login', function()
+{
+    return view('login');
 
-// });
+});
 
 Route::get('/patient', [PatientController::class,'index'])->name('patient');
 Route::get('/patient/{patient}', [PatientController::class,'show'])->name('patient.show');
+Route::get('/patient/{patient}/edit', [PatientController::class,'edit'])->name('patient.edit'); //กดเข้าไปเพื่อเปิด form ที่มีข้อมูลของ record ที่เราต้องการ edit
+Route::patch('/patient/{patient}', [PatientController::class,'update'])->name('patient.update');
 // Route::get('/patient', function()
 // {
 //     $patients = Patient::all();

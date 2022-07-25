@@ -15,6 +15,7 @@
                         <th scope="col">name</th>
                         <th scope="col">full_name</th>
                         <th scope="col">Show</th>
+                        <th scope="col">Edit</th>
                         <th scope="col">Del</th>
                         </tr>
                     </thead>
@@ -29,6 +30,10 @@
                                 <a href=" {{ route('user.show', $user)}} "> <button class="btn btn-primary"
                                     type="button">Show</button> </a>
 
+                            </td>
+                            <td><a href="{{ route('user.edit', $user) }}">
+                                <button type="button" class="btn btn-primary">Edit</button>
+                                </a>
                             </td>
 
                             <td>
