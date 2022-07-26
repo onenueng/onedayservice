@@ -12,7 +12,7 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">sap_id</th>
-                        <th scope="col">name</th>
+                        <th scope="col">user_name</th>
                         <th scope="col">full_name</th>
                         <th scope="col">Show</th>
                         <th scope="col">Edit</th>
@@ -24,7 +24,7 @@
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->sap_id }}</td>
-                            <td>{{ $user->name}}</td>
+                            <td>{{ $user->user_name}}</td>
                             <td>{{ $user->full_name}}</td>
                             <td>
                                 <a href=" {{ route('user.show', $user)}} "> <button class="btn btn-primary"
@@ -37,7 +37,15 @@
                             </td>
 
                             <td>
-                                <button type="button" class="btn btn-primary">Del</button>
+                                <form action="{{ route('user.destroy', $user)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-primary"
+                                    type="submit">Del</button> </a></td>
+                                </form>
+
+                                {{-- <a href=" {{ route('room.show', $room)}} "> <button class="btn btn-primary"
+                                        type="button">Del</button> </a> --}}
                             </td>
                         </tr>
                         @endforeach

@@ -17,7 +17,7 @@
                             <td>sap_id: {{ $user->sap_id}}</td>
                         </tr>
                         <tr>
-                            <td>name: {{ $user->name}}</td>
+                            <td>user_name: {{ $user->user_name}}</td>
                         </tr>
                         <tr>
                             <td>full_name: {{ $user->full_name}}</td>

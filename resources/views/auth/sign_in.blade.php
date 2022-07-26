@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'User Login')
+@section('title', 'User Sing in')
 
 @section('content')
 <body>

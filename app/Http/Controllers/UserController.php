@@ -30,13 +30,21 @@ class UserController extends Controller
     {
         $validated = request()->validate([
             'sap_id' => 'required|max:8',
-            'name' => 'required|unique:users|max:255',
+            'user_name' => 'required|unique:users|max:255',
             'full_name' => 'required|max:255',
             // 'full_name' => 'required|unique:users|max:255',
         ]);
 
         $user->update($validated);
         return redirect()->route('user')->with('feedback', 'update Userสำเร็จแล้ว ');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return back()->with('feedback', ' ลบห้อง '.$user->id. ' สำเร็จแล้ว');
+
     }
 
 
