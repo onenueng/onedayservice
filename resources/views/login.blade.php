@@ -27,12 +27,12 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Username</label>
-                        <input type="text" class="form-control" name="username" id="username"  placeholder="Username">
+                        <input type="text" class="form-control" name="username" id="username" value="{{ old('username',$username ?? null) }}" placeholder="Username">
                         <br>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="password" value="{{ old('password',$password ?? null) }}" placeholder="Password">
                         <br>
                     </div>
 
