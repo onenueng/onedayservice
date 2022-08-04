@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('sap_id',10); // sap id
-            $table->string('user_name')->unique(); //AD username
+            $table->string('username')->unique(); //AD username
             $table->string('full_name'); //ชื่อ-สกุล
             //$table->string('email')->unique();
             //$table->timestamp('email_verified_at')->nullable();
@@ -29,8 +29,8 @@ return new class extends Migration
 
         User::create([
             'sap_id' => '12345678',
-            'user_name' => 'Amin.gg',
-            'full_name' => 'Admin GG',
+            'username' => 'admin.gg',
+            'full_name' => 'admin GG',
             'password' => \Hash::make('secret'),
         ]);
     }

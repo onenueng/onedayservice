@@ -10,6 +10,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Models\Patient;
 
 
@@ -46,11 +47,9 @@ Route::delete('/user/{user}', [UserController::class,'destroy'])->name('user.des
 
 //Route::get('/login', UserController::class)->name('login');
 
-Route::get('/login', function()
-{
-    return view('login');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
-});
 
 Route::get('/patient', [PatientController::class,'index'])->name('patient');
 Route::get('/patient/{patient}', [PatientController::class,'show'])->name('patient.show');

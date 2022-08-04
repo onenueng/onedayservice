@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'sap_id',
-        'user_name',
+        'username',
         'full_name',
         'password',
     ];

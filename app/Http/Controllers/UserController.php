@@ -30,11 +30,18 @@ class UserController extends Controller
     {
         $validated = request()->validate([
             'sap_id' => 'required|max:8',
-            'user_name' => 'required|unique:users|max:255',
+            'username' => 'required|unique:users|max:255',
             'full_name' => 'required|max:255',
             // 'full_name' => 'required|unique:users|max:255',
         ]);
 
+
+        // $user = new User();
+        // $user->sap_id = $validated['sap_id'];
+        // $user->username = $validated['username'];
+        // $user->full_name = $validated['full_name'];
+        // $user->save();
+        
         $user->update($validated);
         return redirect()->route('user')->with('feedback', 'update Userสำเร็จแล้ว ');
     }

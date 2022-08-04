@@ -9,17 +9,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-<form>
+<form method="post" action="{{ route('login.submit') }}">
+    @csrf
     <div class= "container">
         <div class = "d-flex justify-content-center h-100">
             <div class="col-4" >
                 <div class="card">
                     <div class="card-header">
                         <h3>Login</h3>
+
+                        @if(session('feedback'))
+                            <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
+                        @endif
+
+                       
+
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Username</label>
-                        <input type="text" class="form-control" name="name" id="name"  placeholder="Username">
+                        <input type="text" class="form-control" name="username" id="username"  placeholder="Username">
                         <br>
                     </div>
                     <div class="form-group">
