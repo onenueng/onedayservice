@@ -18,13 +18,19 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
+        $data = request()->all();
+
         $validated = request()->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
 
+        $request->username = $validated['username'];
+        $request->password = $validated['password'];
+
+
         $api = new FakeAuthenticationAPI;
-        $apiUser = $api->login($request->input('username'), $request->input('password'));
+        $apiUser = $api->login($request->input('username'), $request->input('password'))->with('feedback', 'username & password เป็นค่าว่างไม่ได้ ');
 
         if (! $apiUser['found']) {
             // แจ้งให้ทราบว่าอะไรสักอย่างผิด
@@ -36,7 +42,7 @@ class LoginController extends Controller
         if ($user = User::where('username', $request->input('username'))->first()) {
             return $user;
         }
-        
+
         return $apiUser;
     }
 }

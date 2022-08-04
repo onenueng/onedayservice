@@ -31,13 +31,13 @@ class RoomController extends Controller
         // }
 
 
-    $room = new Room();
-    $room->name_short = $validated['name_short'];
-    $room->name = $validated['name'];
-    $room->save();
+        $room = new Room();
+        $room->name_short = $validated['name_short'];
+        $room->name = $validated['name'];
+        $room->save();
 
-    //return $room;
-    return redirect()->route('home')->with('feedback', 'เพิ่มห้องสำเร็จแล้ว');
+        //return $room;
+        return redirect()->route('home')->with('feedback', 'เพิ่มห้องสำเร็จแล้ว');
     }
 
     public function index()
