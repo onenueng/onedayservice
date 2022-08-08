@@ -37,9 +37,9 @@ class LoginController extends Controller
 
 
 
-        $api = new FakeAuthenticationAPI;
+        $api = new FakeAuthenticationAPI; //สร้าง API
         // $apiUser = $api->login($request->input('username'), $request->input('password'))->with('feedback', 'username & password เป็นค่าว่างไม่ได้ ');
-        $apiUser = $api->login($request->input('username'), $request->input('password'));
+        $apiUser = $api->login($request->input('username'), $request->input('password')); //รับ Input ที่ user ส่งมา
 
         // if ($apiUser > 0){
         //     return back()->with('feedback', 'username & password เป็นค่าว่างไม่ได้ ')->withInput();
@@ -49,17 +49,19 @@ class LoginController extends Controller
         if (! $apiUser['found']) {
             // แจ้งให้ทราบว่าอะไรสักอย่างผิด
             // return 'user not found';
-            return back()->with('feedback', 'ไม่มีข้อมูล user นี้ ')->withInput();
+            // return back()->with('feedback', 'ไม่มีข้อมูล user นี้ ')->withInput();
+            return back()->with('feedback', 'ไม่พบข้อมูล user นี้ ');
         }
 
         // check ตารางว่ามี user_name นี้หรือยัง ถ้ายังต้อง insert
         // SELECT * FROM users WHERE user_name = ?
         if ($user = User::where('username', $request->input('username'))->first()) {
-            // return $user;
-            // return back()->with('feedback', 'xxx')->withInput();
-            return back()->with( $user);
+            return back()->with('feedback','พบข้อมุล'.$user .'ในตาราง');
+            // return back()->with( $user);
+
         }
 
-        return $apiUser;
+        // return $apiUser;
+        return back()->with('feedback','ยังไม่พบข้อมุล'.$apiUser .'ในตาราง');
     }
 }
