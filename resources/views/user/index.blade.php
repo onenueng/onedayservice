@@ -12,7 +12,7 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">sap_id</th>
-                        <th scope="col">user_name</th>
+                        <th scope="col">username</th>
                         <th scope="col">full_name</th>
                         <th scope="col">Show</th>
                         <th scope="col">Edit</th>
@@ -24,7 +24,7 @@
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->sap_id }}</td>
-                            <td>{{ $user->user_name}}</td>
+                            <td>{{ $user->username}}</td>
                             <td>{{ $user->full_name}}</td>
                             <td>
                                 <a href=" {{ route('user.show', $user)}} "> <button class="btn btn-primary"

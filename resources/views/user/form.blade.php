@@ -6,7 +6,7 @@
 </div>
 <div class="mb-3 col-sm-4">
     <label for="user_name" class="form-label"> user_name</label>
-    <input type="text" class="form-control" name="user_name" id="user_name" value="{{ old('user_name', $user ?? null) }}" placeholder="กรุณากรอก ชื่อ.นามสกุล 3 คัว" >
+    <input type="text" class="form-control" name="username" id="username" value="{{ old('username', $user ?? null) }}" placeholder="กรุณากรอก ชื่อ.นามสกุล 3 คัว" >
 </div>
 <div class="mb-3 col-sm-4">
     <label for="name" class="form-label"> full_name</label>

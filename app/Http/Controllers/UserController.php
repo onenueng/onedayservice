@@ -41,9 +41,9 @@ class UserController extends Controller
         // $user->username = $validated['username'];
         // $user->full_name = $validated['full_name'];
         // $user->save();
-        
+
         $user->update($validated);
-        return redirect()->route('user')->with('feedback', 'update Userสำเร็จแล้ว ');
+        return redirect()->route('user')->with('feedback', 'update User สำเร็จแล้ว ');
     }
 
     public function destroy(User $user)

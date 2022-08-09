@@ -56,12 +56,13 @@ class LoginController extends Controller
         // check ตารางว่ามี user_name นี้หรือยัง ถ้ายังต้อง insert
         // SELECT * FROM users WHERE user_name = ?
         if ($user = User::where('username', $request->input('username'))->first()) {
-            return back()->with('feedback','พบข้อมุล'.$user .'ในตาราง');
+            // return back()->with('feedback','พบข้อมุล '.$user['username'] .' ในตาราง');
+            return back()->with('feedback',$user['username']);
             // return back()->with( $user);
 
         }
 
         // return $apiUser;
-        return back()->with('feedback','ยังไม่พบข้อมุล'.$apiUser .'ในตาราง');
+        return back()->with('feedback','ยังไม่พบข้อมุล '.$apiUser['username'] .' ในตาราง');
     }
 }
