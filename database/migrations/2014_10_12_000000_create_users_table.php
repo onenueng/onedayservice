@@ -23,6 +23,7 @@ return new class extends Migration
             //$table->string('email')->unique();
             //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +32,15 @@ return new class extends Migration
             'sap_id' => '12345678',
             'username' => 'admin.gg',
             'full_name' => 'admin GG',
+            'admin' => true,
+            'password' => \Hash::make('secret'),
+        ]);
+
+        User::create([
+            'sap_id' => '12345679',
+            'username' => 'admin.ms',
+            'full_name' => 'admin MS',
+            'admin' => true,
             'password' => \Hash::make('secret'),
         ]);
     }

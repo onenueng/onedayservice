@@ -34,6 +34,8 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
     Route::get('/home', HomeController::class)->name('home');
 
     Route::get('/booking', [BookingController::class,'index'])->name('booking');

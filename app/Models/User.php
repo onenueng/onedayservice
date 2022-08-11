@@ -21,6 +21,7 @@ class User extends Authenticatable
         'sap_id',
         'username',
         'full_name',
+        'admin',
         'password',
     ];
 

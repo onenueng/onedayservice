@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Bed;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Gate;
 
 class BedController extends Controller
 {
     public function create()
     {
+        if (! Gate::allows('create-bed')) {
+            abort(403);
+        }
+
         return view('bed.create')->with([
             //'beds'=> Bed::all(),//ไม่ต้องส่งค่าเพราะไม่ได้ทำ drop list
             'rooms'=> Room::all() // ส่งค่าเพื่อทำ drop list
@@ -21,6 +26,9 @@ class BedController extends Controller
     {
 
         // $data = request()->all(); //รับมาจาก form
+        if (! Gate::allows('store-bed')) {
+            abort(403);
+        }
 
         $validated = request()->validate([ // candidate key [no + room_id] => beds
             'no' => [
@@ -50,6 +58,10 @@ class BedController extends Controller
 
     public function index()
     {
+        if (! Gate::allows('index-bed')) {
+            abort(403);
+        }
+
         $beds = Bed::all();
 
         return view('bed.index')->with(['beds' => $beds]);
@@ -66,6 +78,10 @@ class BedController extends Controller
 
     public function destroy(Bed $bed)
     {
+        if (! Gate::allows('destroy-bed', $bed)) {
+            abort(403);
+        }
+
         $bed->delete();
 
         return back()->with('feedback', 'Del เตียง'.$bed->no.' '. $bed->room->name. ' สำเร็จแล้ว '  );
