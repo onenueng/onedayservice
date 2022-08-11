@@ -37,6 +37,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('store-bed', function (User $user) {
             return $user->admin; // $user->sap_id === '12345678';
         });
+        Gate::define('show-bed', function (User $user) {
+            return $user->admin; // $user->sap_id === '12345678';
+        });
+        Gate::define('edit-bed', function (User $user) {
+            return $user->admin; // $user->sap_id === '12345678';
+        });
         Gate::define('destroy-bed', function (User $user, Bed $bed) {
             return $user->admin // $user->sap_id === '12345678'
                 && $bed->bookings->count() === 0;

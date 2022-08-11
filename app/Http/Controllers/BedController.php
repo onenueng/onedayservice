@@ -52,7 +52,7 @@ class BedController extends Controller
         $bed->type = $validated['type'];
         $bed->room_id = $validated['room_id'];
         $bed->save();
-        return redirect()->route('home')->with('feedback', 'เพิ่มเตียงสำเร็จแล้ว');
+        return redirect()->route('bed')->with('feedback', 'เพิ่มเตียงสำเร็จแล้ว');
 
     }
 
@@ -69,6 +69,11 @@ class BedController extends Controller
 
     public function show(Bed $bed)
     {
+
+        if (! Gate::allows('show-bed')) {
+            abort(403);
+        }
+
 
         // $bed = Bed::find($bed);
         // return $bed;
@@ -89,6 +94,10 @@ class BedController extends Controller
 
     public function edit(Bed $bed)
     {
+        if (! Gate::allows('edit-bed')) {
+            abort(403);
+        }
+
         return view('bed.edit')->with([
             'bed' => $bed,
             'rooms'=> Room::all()
