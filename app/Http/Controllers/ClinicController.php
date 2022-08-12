@@ -6,11 +6,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Clinic;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Gate;
 
 class ClinicController extends Controller
 {
     public function create()
     {
+        if (! Gate::allows('create-clinic')) {
+            abort(403);
+        }
+
         return view('clinic.create');
     }
 
@@ -18,6 +23,9 @@ class ClinicController extends Controller
 
     public function store()
     {
+        if (! Gate::allows('store-clinic')) {
+            abort(403);
+        }
         $data = request()->all(); //รับมาจาก form
 
         $validated = request()->validate([
@@ -49,6 +57,10 @@ class ClinicController extends Controller
 
     public function index() // []
     {
+        if (! Gate::allows('index-clinic')) {
+            abort(403);
+        }
+
         $clinics = Clinic::all();
 
         return view('clinic.index')->with(['clinics' => $clinics]);
@@ -56,11 +68,20 @@ class ClinicController extends Controller
 
     public function show(Clinic $clinic)
     {
+        if (! Gate::allows('show-clinic')) {
+            abort(403);
+        }
+
         return view('clinic.show')->with(['clinic' => $clinic]);
     }
 
     public function destroy(Clinic $clinic)
     {
+
+        if (! Gate::allows('destroy-clinic', $clinic)) {
+            abort(403);
+        }
+
         $clinic->delete();
 
         return back()->with('feedback', ' ลบคลินิก '.$clinic->name. ' สำเร็จแล้ว');
@@ -68,6 +89,10 @@ class ClinicController extends Controller
 
     public function edit(Clinic $clinic)
     {
+        if (! Gate::allows('edit-clinic')) {
+            abort(403);
+        }
+
         return view('clinic.edit')->with(['clinic'=> $clinic]);
     }
 

@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Procedure;
 use App\Models\Clinic;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Gate;
 
 class ProcedureController extends Controller
 {
     //
     public function create()
     {
+        if (! Gate::allows('create-procedure')) {
+            abort(403);
+        }
+
         return view('procedure.create')->with([
             'procedures'=> Procedure::all(),
             'clinics'=> Clinic::all()
@@ -20,6 +25,10 @@ class ProcedureController extends Controller
 
     public function store()
     {
+        if (! Gate::allows('store-procedure')) {
+            abort(403);
+        }
+
         $data = request()->all(); //รับมาจาก form
 
         $validated = request()->validate([
@@ -48,6 +57,10 @@ class ProcedureController extends Controller
 
     public function index()
     {
+        if (! Gate::allows('index-procedure')) {
+            abort(403);
+        }
+
         $procedures = Procedure::all();
 
         return view('procedure.index')->with(['procedures'=> $procedures]);
@@ -55,11 +68,20 @@ class ProcedureController extends Controller
 
     public function show(Procedure $procedure)
     {
+        if (! Gate::allows('show-procedure')) {
+            abort(403);
+        }
+
         return view('procedure.show')->with(['procedure' => $procedure]);
     }
 
     public function destroy(Procedure $procedure)
     {
+        if (! Gate::allows('destroy-procedure', $procedure)) {
+            abort(403);
+        }
+
+
         $procedure->delete();
 
         return back()->with('feedback', ' ลบหัตถการ '.$procedure->name. ' สำเร็จแล้ว');
@@ -68,6 +90,10 @@ class ProcedureController extends Controller
 
     public  function edit(Procedure $procedure)
     {
+        if (! Gate::allows('edit-procedure')) {
+            abort(403);
+        }
+
         return view('procedure.edit')->with([
             'procedure'=> $procedure,
             'clinics' => Clinic::all()

@@ -4,18 +4,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Gate;
 
 class RoomController extends Controller
 {
     //
     public function create()
     {
+        if (! Gate::allows('create-room')) {
+            abort(403);
+        }
+
+
         return view('room.create');
     }
 
 
     public function store()
     {
+        if (! Gate::allows('store-room')) {
+            abort(403);
+        }
+
         $data = request()->all(); //รับมาจาก form
 
 
@@ -42,6 +52,10 @@ class RoomController extends Controller
 
     public function index()
     {
+        if (! Gate::allows('index-room')) {
+            abort(403);
+        }
+
         $rooms = Room::all();
 
         return view('room.index')->with(['rooms'=> $rooms]);
@@ -52,11 +66,19 @@ class RoomController extends Controller
 
     public function show(Room $room)
     {
+        if (! Gate::allows('show-room')) {
+            abort(403);
+        }
+
         return view('room.show')->with(['room' => $room]);
     }
 
     public function destroy(Room $room)
     {
+        if (! Gate::allows('destroy-room')) {
+            abort(403);
+        }
+
         $room->delete();
 
         return back()->with('feedback', ' ลบห้อง '.$room->name. ' สำเร็จแล้ว');
@@ -65,6 +87,10 @@ class RoomController extends Controller
 
     public function edit(Room $room)
     {
+        if (! Gate::allows('edit-room')) {
+            abort(403);
+        }
+
         return view('room.edit')->with(['room'=> $room]);
     }
 
