@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Bed;
 use App\Models\Procedure;
 use App\Models\Booking;
+use App\APIs\FakePatientAPI;
+use Illuminate\Support\Facades\Auth;
 
 
 class BookingController extends Controller
@@ -32,7 +34,7 @@ class BookingController extends Controller
         }
 
         //insert time to date
-        if ($data['time'] == 'morning'){
+        if ($data['time_label'] == 'morning'){
             $datetime_start = $data['datetime_start'] . ' ' . '09:00:00';
             $datetime_stop  = $data['datetime_start'] . ' ' . '12:00:00';
         } else {
@@ -50,7 +52,8 @@ class BookingController extends Controller
         }
 
         $booking = new Booking();
-        $booking->patient_id = 1;
+        // $booking->patient_id = 1;
+        $booking->patient_id = $data['patient_id'];
         $booking->bed_id = $data['bed_id'];
         $bed = Bed::find($data['bed_id']);
         $booking->room_id = $bed->room->id;
@@ -62,7 +65,8 @@ class BookingController extends Controller
 
         // week_day
         $booking->week_day = now()->parse($data['datetime_start'])->weekDay();
-        $booking->user_id = 1;
+        // $booking->user_id = 1;
+        $booking->user_id = Auth::id();
         $booking->save(); //insert record นี้เข้าไปในตาราง
 
         return redirect()->route('home')->with('feedback', 'จองเตียงสำเร็จแล้ว');
@@ -111,6 +115,17 @@ class BookingController extends Controller
     }
 
 
+    public function searchHn()
+    {
+        request()->validate(['hn' => 'required|digits:8']);
 
+        $api = new FakePatientAPI(); 
+        $patient = $api->getPatient(request()->input('hn'));
+
+        session()->flash('booking-patient', $patient);
+        
+        return back()->with('feedback', 'search patient '. $patient->full_name);
+
+    }
 
 }

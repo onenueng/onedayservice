@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store'); // create-insert to table
     Route::delete('/booking/{booking}', [BookingController::class,'destroy'])->name('booking.destroy');
     Route::patch('/booking/{booking}', [BookingController::class,'update'])->name('booking.update');
+    Route::post('/search-hn', [BookingController::class,'searchHn'])->name('search-hn');
 
     Route::get('/user', [UserController::class,'index'])->name('user');
     Route::get('/user/{user}', [UserController::class,'show'])->name('user.show');

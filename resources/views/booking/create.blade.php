@@ -9,6 +9,7 @@
 
     @include('partials.form-feedback')
 
+    @include('booking.hn')
     <form action="/booking" method="post">
      @include('booking.form')
 

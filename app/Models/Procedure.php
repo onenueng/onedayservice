@@ -17,7 +17,7 @@ class Procedure extends Model
 
     public function bookings()
     {
-        return $this->belognsTo(Booking::class);
+        return $this->hasMany(Booking::class);
     }
 
 }

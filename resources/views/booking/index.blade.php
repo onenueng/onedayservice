@@ -49,7 +49,7 @@
                         <td>{{ $booking->room->name_short }}</td>
                         <td>{{ $booking->clinic->name }}</td>
                         <td>{{ $booking->procedure->name}}</td>
-                        <td>{{ $booking->patient_id }}</td>
+                        <td>{{ $booking->patient->hn }}</td>
                         <td>{{ $booking->patient->full_name }}</td>
                         {{-- <td>
                             <a href="{{ route('booking.edit', $booking) }}"><button type="button" class="btn btn-primary">Edit</button>

@@ -11,7 +11,7 @@
             @foreach ($clinics as $clinic)
             <option value="{{ $clinic->id  }}" {{ old('clinic_id',$procedure ?? null) == $clinic->id  ? 'selected' : '' }}> {{ $clinic->name}}</option>
             @endforeach
-            <option value="100">foo clinic</option>
+            
 
         </select>
     </div>

@@ -1,5 +1,10 @@
+    
+    @if(session()->has('booking-patient'))
+    <div>HN {{ session('booking-patient')->hn }} {{ session('booking-patient')->full_name }}</div>
+    <input type="hidden" name="patient_id" value="{{ session('booking-patient')->id }}">
+    @endif
+    
     @csrf
-
     <div class="mb-3">
         <label for="datetime_start" class="form-label"> วันที่</label>
         <input type="date" class="form-control" name="datetime_start" id="datetime_start" value="{{ old('datetime_start', $booking ?? null) }}" placeholder="กรุณากรอกวันที่" required>
