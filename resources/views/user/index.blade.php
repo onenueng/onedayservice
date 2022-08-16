@@ -14,6 +14,7 @@
                         <th scope="col">sap_id</th>
                         <th scope="col">username</th>
                         <th scope="col">full_name</th>
+                        <th scope="col">admin</th>
                         <th scope="col">Show</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Del</th>
@@ -26,6 +27,7 @@
                             <td>{{ $user->sap_id }}</td>
                             <td>{{ $user->username}}</td>
                             <td>{{ $user->full_name}}</td>
+                            <td>{{ $user->admin}}</td>
                             <td>
                                 <a href=" {{ route('user.show', $user)}} "> <button class="btn btn-primary"
                                     type="button">Show</button> </a>

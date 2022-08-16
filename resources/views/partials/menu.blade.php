@@ -22,6 +22,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('bed') }}">เตียง</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('user') }}">User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('patient') }}">Patient</a>
+          </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -32,6 +38,7 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {{-- <li >คุณ {{ $user->full_name}} </li> --}}
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}">Logout</a>
         </ul>

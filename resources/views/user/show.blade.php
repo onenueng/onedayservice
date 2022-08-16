@@ -23,6 +23,9 @@
                             <td>full_name: {{ $user->full_name}}</td>
                         </tr>
                         <tr>
+                            <td>admin: {{ $user->admin}}</td>
+                        </tr>
+                        <tr>
                             <td><a href=" {{ route('user')}} "><button type="button"
                                         class="btn btn-primary">Back</button></a></td>
                         </tr>

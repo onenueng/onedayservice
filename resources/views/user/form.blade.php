@@ -13,6 +13,10 @@
     <input type="text" class="form-control" name="full_name" id="full_name" value="{{ old('full_name', $user ?? null) }}" placeholder="กรุณากรอกชื่อ-นามสกุล" >
 </div>
 <div class="mb-3 col-sm-4">
+    <label for="name" class="form-label"> admin</label>
+    <input type="text" class="form-control" name="admin" id="admin" value="{{ old('admin', $user ?? null) }}" placeholder="admin" >
+</div>
+<div class="mb-3 col-sm-4">
     <input type="submit" value ="submit" class="btn btn-primary">
     <td><a href="{{ route('user') }}"><button type="button" class="btn btn-primary">back</button></a></td>
 </div>
