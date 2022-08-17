@@ -8,9 +8,20 @@
     <label for="name" class="form-label"> ชื่อคลินิก</label>
     <input type="text" class="form-control" name="name" id="name" value="{{ old('name', $clinic ?? null) }}" placeholder="กรุณากรอกชื่อคลินิก" >
 </div>
-<div class="mb-3 col-sm-4">
+{{-- <div class="mb-3 col-sm-4">
     <label for="active" class="form-label"> Active</label>
     <input type="text" class="form-control" name="active" id="active" value="{{ old('active', $clinic ?? null) }}" placeholder="active" >
+
+</div> --}}
+
+<div class="mb-3 col-sm-4">
+    <label for="active" class="form-label"> active</label>
+    <select name="active" id="active" class="form-select">
+        <option selected value ="">--กรุณาเลือก--</option>
+        <option value="large" {{ old('active', $clinic ?? null) == '1'? 'selected' : '' }}>true</option>
+        <option value="small" {{ old('active', $clinic ?? null) == '0' ? 'selected' : '' }}>false</option>
+
+    </select>
 
 </div>
 

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Bed;
 use App\Models\Procedure;
 use App\Models\Booking;
-use App\Models\User;
+
 use App\APIs\FakePatientAPI;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +19,8 @@ class BookingController extends Controller
     {
         return view('booking.create')->with([
             'beds'=> Bed::all(),
-            'procedures'=> Procedure::all()
+            'procedures'=> Procedure::all(),
+            // 'user' => request()->user()->full_name,
         ]);
     }
 
@@ -70,6 +71,7 @@ class BookingController extends Controller
         $booking->user_id = Auth::id();
         $booking->save(); //insert record นี้เข้าไปในตาราง
 
+
         return redirect()->route('home')->with('feedback', 'จองเตียงสำเร็จแล้ว');
     }
 
@@ -78,12 +80,12 @@ class BookingController extends Controller
     {
         $bookings = Booking::all();
         $procedures = Procedure::all();
-        $users = User::all();
+        // $users = User::all();
 
         return view('booking.index')->with([
                 'bookings' => $bookings,
                 'procedures'=> $procedures,
-                'users' => $user
+                // 'user' => request()->user()->full_name,
                 ]);
     }
 
@@ -122,11 +124,11 @@ class BookingController extends Controller
     {
         request()->validate(['hn' => 'required|digits:8']);
 
-        $api = new FakePatientAPI(); 
+        $api = new FakePatientAPI();
         $patient = $api->getPatient(request()->input('hn'));
 
         session()->flash('booking-patient', $patient);
-        
+
         return back()->with('feedback', 'search patient '. $patient->full_name);
 
     }

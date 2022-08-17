@@ -24,6 +24,7 @@ return new class extends Migration
             // $table->string('idproced',4); //รหัสหัตถการ
             $table->string('name'); //ชื่อหัตถการ
             $table->foreignId('clinic_id')->constrained();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Procedure;
 use App\Models\Booking;
-use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,15 +15,12 @@ class HomeController extends Controller
         // return view('index');
         $bookings = Booking::all();
         $procedures = Procedure::all();
-        $users = User::all();
-       
+        // $users = User::all();
 
         return view('booking.index')->with([
                 'bookings' => $bookings,
                 'procedures'=> $procedures,
-                'user' => request()->user()
-
-                
+                // 'user' => request()->user()->full_name,
                 ]);
     }
 
