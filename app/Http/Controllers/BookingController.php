@@ -83,7 +83,7 @@ class BookingController extends Controller
         return view('booking.index')->with([
                 'bookings' => $bookings,
                 'procedures'=> $procedures,
-                'users' => $users
+                'users' => $user
                 ]);
     }
 
