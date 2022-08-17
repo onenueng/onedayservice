@@ -26,6 +26,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Code</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Active</th>
                         <th scope="col">Show</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Del</th>
@@ -37,6 +38,7 @@
                         <th scope="row"> {{ $clinic->id }}</th>
                         <td>{{ $clinic->code }}</td>
                         <td>{{ $clinic->name }}</td>
+                        <td>{{ $clinic->active }}</td>
                         <td><a href="{{ route('clinic.show', $clinic) }}">
                             <button type="button" class="btn btn-primary">show</button>
                             </a>

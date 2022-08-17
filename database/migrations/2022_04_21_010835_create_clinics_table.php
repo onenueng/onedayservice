@@ -18,16 +18,17 @@ return new class extends Migration
             $table->id();
             $table->string('code', 6)->default('0000'); //รหัสคลินิก
             $table->string('name')->unique(); //ชื่อคลินิก
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
 
-        Clinic::create(['name' => 'โรคภูมิแพ้', 'code' => '0573']);
-        Clinic::create(['name' => 'โรคผิวหนัง', 'code' => '0574']);
-        Clinic::create(['name' => 'โรคโภชนาการ', 'code' => '0575']);
-        Clinic::create(['name' => 'โรคต่อมไร้ท่อ', 'code' => '0576']);
-        Clinic::create(['name' => 'โรคพันธุศาสตร์', 'code' => '0577']);
-        Clinic::create(['name' => 'โรคข้อ', 'code' => '0585']);
-        Clinic::create(['name' => 'โรคไต', 'code' => '0585']);
+        Clinic::create(['name' => 'โรคภูมิแพ้', 'code' => '0573', 'active' => true ]);
+        Clinic::create(['name' => 'โรคผิวหนัง', 'code' => '0574', 'active' => true]);
+        Clinic::create(['name' => 'โรคโภชนาการ', 'code' => '0575', 'active' => true]);
+        Clinic::create(['name' => 'โรคต่อมไร้ท่อ', 'code' => '0576', 'active' => true]);
+        Clinic::create(['name' => 'โรคพันธุศาสตร์', 'code' => '0577','active' => true]);
+        Clinic::create(['name' => 'โรคข้อ', 'code' => '0585', 'active' => true]);
+        Clinic::create(['name' => 'โรคไต', 'code' => '0585', 'active' => true]);
     }
 
     /**

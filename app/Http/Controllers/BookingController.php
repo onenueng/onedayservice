@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Bed;
 use App\Models\Procedure;
 use App\Models\Booking;
+use App\Models\User;
 use App\APIs\FakePatientAPI;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,10 +78,12 @@ class BookingController extends Controller
     {
         $bookings = Booking::all();
         $procedures = Procedure::all();
+        $users = User::all();
 
         return view('booking.index')->with([
                 'bookings' => $bookings,
-                'procedures'=> $procedures
+                'procedures'=> $procedures,
+                'users' => $users
                 ]);
     }
 

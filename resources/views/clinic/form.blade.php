@@ -9,6 +9,13 @@
     <input type="text" class="form-control" name="name" id="name" value="{{ old('name', $clinic ?? null) }}" placeholder="กรุณากรอกชื่อคลินิก" >
 </div>
 <div class="mb-3 col-sm-4">
+    <label for="active" class="form-label"> Active</label>
+    <input type="text" class="form-control" name="active" id="active" value="{{ old('active', $clinic ?? null) }}" placeholder="active" >
+
+</div>
+
+
+<div class="mb-3 col-sm-4">
     <input type="submit" value ="submit" class="btn btn-primary">
     <td><a href="{{ route('clinic') }}"><button type="button" class="btn btn-primary">back</button></a></td>
 </div>

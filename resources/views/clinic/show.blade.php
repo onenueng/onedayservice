@@ -20,6 +20,9 @@
                 <td>name: {{ $clinic->name }}</td>
             </tr>
             <tr>
+                <td>active: {{ $clinic->active }}</td>
+            </tr>
+            <tr>
                 <td><a href="{{ route('clinic') }}"><button type="button" class="btn btn-primary">back</button></a></td>
             </tr>
         </tbody>

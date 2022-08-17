@@ -31,6 +31,7 @@ class ClinicController extends Controller
         $validated = request()->validate([
             'code' => 'required|max:6',
             'name' => 'required|unique:clinics|max:255',
+            'active' => 'required'
         ]);
 
     //$nameAlready = Clinic::where('name',$data['name'])->count();
@@ -46,6 +47,7 @@ class ClinicController extends Controller
     $clinic = new Clinic();
     $clinic->code = $validated['code'];
     $clinic->name = $validated['name'];
+    $clinic->active = $validated['active'];
     $clinic->save();
 
     //return $clinic;
@@ -101,6 +103,8 @@ class ClinicController extends Controller
         $validated = request()->validate([
             'code' => 'required|max:6',
             'name' => 'required|unique:clinics|max:255',
+            'active' => 'required'
+
         ]);
 
         $clinic->update($validated);
