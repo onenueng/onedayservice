@@ -6,9 +6,9 @@
 <div class="container">
     @include('partials.menu')
     <div class="row">
+        <div class="col-md-6 pull-left"><h1>รายละเอียดการจอง</h1></div>
+        <div class="col-md-6 pull-right"><h6>คุณ {{ Auth::user()->full_name }}</h6></div>
         <div class="col-12">
-            <h1>รายละเอียดการจอง</h1>
-
             @if(session('feedback'))
                 <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
             @endif
