@@ -7,7 +7,8 @@
     @include('partials.menu')
     <div class="row">
         <div class="col-6">
-            <h1>รายละเอียด Bed</h1>
+            <div class="col pull-left"><h1>รายละเอียดเตียง</h1></div>
+            <div class="col pull-right"><h6>คุณ {{ Auth::user()->full_name }}</h6></div>
             {{-- {{ session('feedback', null) }} --}}
 
             @if(session('feedback'))
@@ -26,6 +27,7 @@
                         <th scope="col">No</th>
                         <th scope="col">type</th>
                         <th scope="col">room</th>
+                        <th scope="col">active</th>
                         <th scope="col">Show</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Del</th>
@@ -38,6 +40,7 @@
                         <th>{{ $bed->no }}</th>
                         <td>{{ $bed->type }}</td>
                         <td>{{ $bed->room->name_short}}</td>
+                        <td>{{ $bed->active }}</td>
                         <td>
                             <a href="{{ route('bed.show', $bed) }}"><button type="button" class="btn btn-primary">show</button>
                             </a>

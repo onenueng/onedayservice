@@ -23,6 +23,9 @@
                     <td>room: {{ $bed->room->name_short }}</td>
                 </tr>
                 <tr>
+                    <td>active: {{ $bed->active }}</td>
+                </tr>
+                <tr>
                     <td><a href="{{ route('bed') }}"><button type="button" class="btn btn-primary">back</button></a></td>
                 </tr>
             </tbody>

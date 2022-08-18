@@ -8,7 +8,8 @@
     <div class="row">
         <div class="col-8">
 
-            <h1>รายละเอียด Room</h1>
+            <div class="col pull-left"><h1>รายละเอียดห้อง</h1></div>
+            <div class="col pull-right"><h6>คุณ {{ Auth::user()->full_name }}</h6></div>
 
             @if(session('feedback'))
                 <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
@@ -27,6 +28,7 @@
                         <th scope="col">#</th>
                         <th scope="col">name short</th>
                         <th scope="col">name</th>
+                        <th scope="col">active</th>
                         <th scope="col">Show</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Del</th>
@@ -38,6 +40,7 @@
                         <td>{{ $room->id }}</td>
                         <td>{{ $room->name_short}}</td>
                         <td>{{ $room->name}}</td>
+                        <td>{{ $room->active }}</td>
                         <td><a href=" {{ route('room.show', $room)}} "> <button class="btn btn-primary"
                                     type="button">Show</button> </a></td>
                         <td><a href=" {{ route('room.edit', $room)}} "> <button class="btn btn-primary"

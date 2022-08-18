@@ -21,6 +21,9 @@
                         <td>name: {{ $room->name}}</td>
                     </tr>
                     <tr>
+                        <td>active: {{ $room->active}}</td>
+                    </tr>
+                    <tr>
                         <td><a href=" {{ route('room')}} "><button type="button"
                                     class="btn btn-primary">Back</button></a></td>
                     </tr>

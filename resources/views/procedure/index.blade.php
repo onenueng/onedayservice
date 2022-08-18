@@ -9,7 +9,8 @@
     <div class="row">
         <div class="col-8">
 
-            <h1>รายละเอียด Procedure</h1>
+            <div class="col pull-left"><h1>รายละเอียดหัตถการ</h1></div>
+            <div class="col pull-right"><h6>คุณ {{ Auth::user()->full_name }}</h6></div>
 
             @if(session('feedback'))
                 <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
@@ -29,6 +30,7 @@
                         <th scope="col">#</th>
                         <th scope="col">name</th>
                         <th scope="col">clinic</th>
+                        <th scope="col">active</th>
                         <th scope="col">Show</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Del</th>
@@ -40,6 +42,7 @@
                         <td>{{ $procedure->id }}</td>
                         <td>{{ $procedure->name}}</td>
                         <td>{{ $procedure->clinic->name }}</td>
+                        <td>{{ $procedure->active }}</td>
                         <td><a href="{{ route('procedure.show', $procedure) }}">
                                 <button type="button" class="btn btn-primary">Show</button>
                             </a>

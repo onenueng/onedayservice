@@ -37,7 +37,8 @@ class BedController extends Controller
                 'max:255'
             ],
             'room_id' => 'required|exists:rooms,id',
-            'type' => 'required'
+            'type' => 'required',
+            'active' => 'required',
         ]);
         // $nameAlready = Bed::where('no',$data['no'])->where('type', $data['type'])->count();
         // $nameAlready = Bed::where('no',$data['no'])->where('room_id', $data['room_id'])->count();
@@ -51,6 +52,7 @@ class BedController extends Controller
         $bed->no = $validated['no'];
         $bed->type = $validated['type'];
         $bed->room_id = $validated['room_id'];
+        $bed->active = $validated['active'];
         $bed->save();
         return redirect()->route('bed')->with('feedback', 'เพิ่มเตียงสำเร็จแล้ว');
 
@@ -113,7 +115,8 @@ class BedController extends Controller
                 'max:255'
             ],
             'room_id' => 'required|exists:rooms,id',
-            'type' => 'required'
+            'type' => 'required',
+            'active' => 'required',
         ]);
 
         $bed->update($validated);

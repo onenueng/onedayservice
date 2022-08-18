@@ -20,13 +20,12 @@
         <option selected value ="">--กรุณาเลือก--</option>
         <option value="large" {{ old('active', $clinic ?? null) == '1'? 'selected' : '' }}>true</option>
         <option value="small" {{ old('active', $clinic ?? null) == '0' ? 'selected' : '' }}>false</option>
-
     </select>
-
 </div>
 
 
 <div class="mb-3 col-sm-4">
     <input type="submit" value ="submit" class="btn btn-primary">
+    <button type="reset" class="btn btn-primary">Cancel</button></td>
     <td><a href="{{ route('clinic') }}"><button type="button" class="btn btn-primary">back</button></a></td>
 </div>

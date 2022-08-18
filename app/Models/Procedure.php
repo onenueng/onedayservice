@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Procedure extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','clinic_id'];
+    protected $fillable = ['name','clinic_id','active'];
 
     public function clinic()
     {

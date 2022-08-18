@@ -38,6 +38,7 @@ class ProcedureController extends Controller
                 'max:255'
             ],
             'clinic_id' => 'required|exists:clinics,id',
+            'active' => 'required',
         ]);
 
 
@@ -50,6 +51,7 @@ class ProcedureController extends Controller
         $procedure = new Procedure();
         $procedure->name = $validated['name'];
         $procedure->clinic_id = $validated['clinic_id'];
+        $procedure->active = $validated['active'];
         $procedure->save();
 
         return redirect()->route('home')->with('feedback', 'เพิ่มหัตถการสำเร็จแล้ว');
@@ -110,6 +112,7 @@ class ProcedureController extends Controller
                 'max:255'
             ],
             'clinic_id' => 'required|exists:clinics,id',
+            'active' => 'required',
         ]);
 
         $procedure->update($validated);
