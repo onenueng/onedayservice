@@ -17,6 +17,7 @@
                     <th scope="col">dob</th>
                     <th scope="col">phone</th>
                     <th scope="col">Show</th>
+                    <th scope="col">Edit</th>
                     <th scope="col">Del</th>
                     </tr>
                 </thead>
@@ -40,7 +41,7 @@
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-primary">Del</button>
                         </td>
                     </tr>
                     @endforeach

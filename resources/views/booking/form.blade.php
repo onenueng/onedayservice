@@ -4,8 +4,8 @@
         <div class="col">HN {{ session('booking-patient')->hn }} {{ session('booking-patient')->full_name }}</div>
     </div>
     <div class="row g-3">
-        <div class="col">ว.ด.ป.เกิด {{ session('booking-patient')->dob }} อายุ {{ session('booking-patient')->dob }}</div>
-    </div>
+        <div class="col">ว.ด.ป.เกิด {{ session('booking-patient')->dob_label }} อายุ {{ session('booking-patient')->dob }}</div>
+    </div>  
         <input type="hidden" name="patient_id" value="{{ session('booking-patient')->id }}">
     @endif
 

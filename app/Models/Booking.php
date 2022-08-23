@@ -56,6 +56,7 @@ class Booking extends Model
         return $this->datetime_start->hour === 9 ? 'เช้า' : 'บ่าย';
     }
 
+    
 
 
 
