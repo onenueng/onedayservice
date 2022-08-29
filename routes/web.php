@@ -88,6 +88,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/bed', [BedController::class,'store'])->name('bed.store');
     Route::delete('/bed/{bed}', [BedController::class,'destroy'])->name('bed.destroy');
     Route::patch('/bed/{bed}', [BedController::class,'update'])->name('bed.update');
+
+    Route::get ('/table-booking', function(){
+        return view ('table-booking');
+    });
 });
 
 
