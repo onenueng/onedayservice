@@ -17,7 +17,6 @@
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a class="btn btn-primary" role="button" href="{{ route('booking.create') }}">จองเตียง</a>
                 </div>
-
             </div>
 
             <table class="table table-striped">
