@@ -134,20 +134,21 @@ class BookingController extends Controller
 
     }
 
-    public function information()
-    {
-        $bookings = Booking::all();
-        $procedures = Procedure::all();
-        $clinics  = Clinic::all();
-        // $users = User::all();
+    // public function information()
+    // {
+    //     $bookings = Booking::all();
+    //     $procedures = Procedure::all();
+    //     $clinics  = Clinic::all();
+    //     // $users = User::all();
 
-        return view('booking.information')->with([
-                'bookings' => $bookings,
-                'procedures'=> $procedures,
-                'clinics' => $clinics,
-                // 'user' => request()->user()->full_name,
-                ]);
-    }
+    //     return view('booking.information')->with([
+    //             'bookings' => $bookings,
+    //             'procedures'=> $procedures,
+    //             'clinics' => $clinics,
+    //             // 'user' => request()->user()->full_name,
+    //             ]);
+    // }
+
 
 
 

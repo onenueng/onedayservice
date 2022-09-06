@@ -12,6 +12,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Models\Patient;
+use App\Models\Booking;
+use App\Models\Clinic;
 
 
 /*
@@ -45,7 +47,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/booking/{booking}', [BookingController::class,'destroy'])->name('booking.destroy');
     Route::patch('/booking/{booking}', [BookingController::class,'update'])->name('booking.update');
     Route::post('/search-hn', [BookingController::class,'searchHn'])->name('search-hn');
-    Route::get('/booking/information',[BookingController::class,'information'])->name('booking.information');
+    //Route::get('/booking/information',[BookingController::class,'information'])->name('booking.information');
+    
+    Route::get('booking/information', function() {
+        return view ('booking/information')->with([
+            'bookings' =>Booking::all(),
+            'clinics' =>Clinic::all()
+        ]);
+
+    });
+
 
     Route::get('/user', [UserController::class,'index'])->name('user');
     Route::get('/user/{user}', [UserController::class,'show'])->name('user.show');
