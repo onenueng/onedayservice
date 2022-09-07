@@ -58,8 +58,9 @@ class BookingController extends Controller
         // $booking->patient_id = 1;
         $booking->patient_id = $data['patient_id'];
         $booking->bed_id = $data['bed_id'];
-        $bed = Bed::find($data['bed_id']);
-        $booking->room_id = $bed->room->id;
+        $booking->room_id = Bed::find($data['bed_id'])->room->id;
+        // $bed = Bed::find($data['bed_id']);
+        // $booking->room_id = $bed->room->id;
         $booking->procedure_id = $data['procedure_id'];
         $procedure = Procedure::find($data['procedure_id']);
         $booking->clinic_id = $procedure->clinic->id;
@@ -134,20 +135,24 @@ class BookingController extends Controller
 
     }
 
-    // public function information()
-    // {
-    //     $bookings = Booking::all();
-    //     $procedures = Procedure::all();
-    //     $clinics  = Clinic::all();
-    //     // $users = User::all();
+    public function information()
+    {
+        $bookings = Booking::all();
+        $procedures = Procedure::all();
+        $clinics  = Clinic::all();
 
-    //     return view('booking.information')->with([
-    //             'bookings' => $bookings,
-    //             'procedures'=> $procedures,
-    //             'clinics' => $clinics,
-    //             // 'user' => request()->user()->full_name,
-    //             ]);
-    // }
+        // return $bookings;
+        // validate
+        if ($bookings['datetime_start'] == '09:00:00'){
+            return '1' ;
+        }
+        
+        return view('booking.information')->with([
+                'bookings' => $bookings,
+                'procedures'=> $procedures,
+                'clinics' => $clinics,
+                ]);
+    }
 
 
 

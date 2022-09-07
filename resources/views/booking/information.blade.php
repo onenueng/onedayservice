@@ -34,11 +34,9 @@
                     <select id="clinic_name" class="form-control">
                         <option selected>เลือกคลินิก</option>
                         @foreach ($clinics as $clinic)
-                                <option value="{{ $clinic->id  }}" {{ old('clinic_id', $clinic ?? null) == $clinic->id ? 'selected' : '' }}> </option>
+                                <option value="{{ $clinic->id  }}" {{ old('clinic_id', $clinic ?? null) == $clinic->id ? 'selected' : '' }}> {{ $clinic->name }}</option>
                         @endforeach 
                         </option>
-                           
-                        
                     </select>
                 </div>
                 <div class="col col-sm-4">
@@ -48,9 +46,7 @@
                 <div class="col col-sm-4">
                     <label for="datetime_stop" class="form-label"> วันที่สิ้นสุด</label>
                     <input type="date" class="form-control" name="datetime_stop" id="datetime_stop" value="{{ old('datetime_stop') }}" placeholder="กรุณากรอกวันที่" required>
-
                 </div>
-                
             </div>
             <input type="submit" value ="search" class="btn btn-primary">
         </form>
