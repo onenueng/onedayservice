@@ -143,9 +143,9 @@ class BookingController extends Controller
 
         // return $bookings;
         // validate
-        if ($bookings['datetime_start'] == '09:00:00'){
-            return '1' ;
-        }
+        // $dt = $bookings['datetime_start'];
+      
+
         
         return view('booking.information')->with([
                 'bookings' => $bookings,

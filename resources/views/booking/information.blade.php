@@ -18,6 +18,8 @@
         @if(session('feedback'))
             <div class="alert alert-danger" role="alert">{{ session('feedback') }}</div>
         @endif
+        
+    
 
     <div class="col-md-6 pull-right"><h6>คุณ {{ Auth::user()->full_name }}</h6></div>
 
